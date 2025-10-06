@@ -1,67 +1,76 @@
+/* ==== L.LOCK — светлая, контрастная тема ==== */
 :root{
+  --bg:#ffffff;        /* общий фон */
+  --alt:#fff8ec;       /* чередующаяся секция (теплая) */
+  --card:#ffffff;      /* карточки */
+  --ink:#0b1220;       /* основной текст */
+  --dim:#4b5563;       /* вторичный текст */
+  --muted:#8a94a6;     /* самый спокойный */
+  --accent:#ff8a00;    /* оранжевый */
+  --accent-2:#1e40af;  /* насыщённый синий */
+  --ring: rgba(30,64,175,.25);
+  --shadow: 0 10px 30px rgba(30,64,175,.08), 0 8px 20px rgba(255,138,0,.10);
+}
 
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;line-height:1.6}
+img{max-width:100%;display:block}
+a{color:var(--accent-2);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{width:min(1120px,92%);margin:0 auto}
+.row{display:flex;gap:1rem;justify-content:space-between;align-items:center}
 
-/* Hero / Alternating sections */
+/* ==== Header ==== */
+.topbar{position:sticky;top:0;background:#fff;border-bottom:1px solid #eef1ff;z-index:20}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0}
+.brand{display:flex;align-items:center;gap:.8rem}
+.logo{width:62px;height:62px;border-radius:12px;object-fit:cover;box-shadow:var(--shadow)}
+.brand-name{font-weight:900;letter-spacing:.2px}
+.call-now{background:var(--accent-2);color:#fff;padding:.7rem 1rem;border-radius:12px;font-weight:800;box-shadow:var(--shadow)}
+
+/* ==== Hero (светлый) ==== */
 .hero{position:relative;overflow:hidden}
-.hero-light{background:linear-gradient(180deg,#fff,#fff6eb 60%, #ffffff)}
+.hero-light{background:linear-gradient(180deg,#ffffff 0%,#fff5e6 60%,#ffffff 100%)}
 .hero-inner{position:relative;z-index:1;padding:3rem 0 2rem}
 .hero h1{font-size:clamp(2rem,3.6vw,3.2rem);line-height:1.15;margin:0 0 .6rem}
 .accent{background:linear-gradient(90deg,var(--accent),#ffb351);-webkit-background-clip:text;background-clip:text;color:transparent}
 .lead{color:var(--dim);max-width:70ch}
 .cta-row{display:flex;gap:.8rem;margin:1.2rem 0 1rem;flex-wrap:wrap}
 .btn{display:inline-block;padding:.9rem 1.15rem;border-radius:14px;font-weight:900;background:var(--accent);color:#1a1205;box-shadow:var(--shadow);border:2px solid transparent}
+.btn:hover{filter:brightness(1.05)}
 .btn.ghost{background:#fff;border-color:#e6ecff;color:var(--accent-2)}
 .btn.big{padding:1rem 1.25rem}
 .badges{display:flex;gap:.6rem;flex-wrap:wrap;padding:0;margin:1rem 0 0;list-style:none}
 .badges li{background:#eef3ff;border:1px solid #e2eaff;padding:.5rem .7rem;border-radius:999px;font-size:.95rem;color:#1f2d60}
 
-
+/* ==== Секции и сетки ==== */
 .section{padding:2.6rem 0}
 .section.alt{background:var(--alt)}
 .grid-2{display:grid;grid-template-columns:1fr;gap:1.2rem}
 @media(min-width:900px){.grid-2{grid-template-columns:1.1fr .9fr}}
-
-
 h1,h2,h3{margin:.2rem 0 1rem}
 .dim{color:var(--dim)}
 
-
-/* Cards */
+/* ==== Карточки / цены ==== */
 .card{background:var(--card);border:1px solid #eef1ff;border-radius:18px;padding:1.1rem}
 .lift{box-shadow:var(--shadow);transition:transform .15s, box-shadow .15s}
 .lift:hover{transform:translateY(-2px)}
 .card h3{margin-top:0}
 
-
-/* Pricing */
 .cards{display:grid;grid-template-columns:1fr;gap:1rem}
 @media(min-width:780px){.cards{grid-template-columns:repeat(3,1fr)}}
 .price{font-size:2rem;font-weight:900;color:var(--accent)}
 .note{color:var(--muted);margin-top:1rem}
 
-
-/* Lists */
+/* ==== Списки ==== */
 .check{list-style:none;padding-left:0}
 .check li{position:relative;padding-left:1.4rem;margin:.35rem 0}
 .check li::before{content:"✓";position:absolute;left:0;top:0;color:var(--accent);font-weight:900}
 .cols{columns:2;gap:1rem;padding-left:1rem}
 .cols li{break-inside:avoid;margin:.25rem 0}
 
-
-/* Blog */
-.post-list{display:grid;grid-template-columns:1fr;gap:1rem}
-@media(min-width:900px){.post-list{grid-template-columns:repeat(3,1fr)}}
-.post h3{margin:.2rem 0 .5rem}
-.post h3 a{text-decoration:none}
-
-
-/* Reviews */
-.reviews-grid{display:grid;grid-template-columns:1fr;gap:1rem}
-@media(min-width:900px){.reviews-grid{grid-template-columns:repeat(3,1fr)}}
-.review h4{margin:.2rem 0 .4rem}
-
-
-/* Kontakt */
+/* ==== Контакты / карта ==== */
 .info{list-style:none;padding-left:0}
 .info li{margin:.4rem 0}
 .socials{display:flex;gap:.6rem;margin:1rem 0}
@@ -69,14 +78,12 @@ h1,h2,h3{margin:.2rem 0 1rem}
 .map-wrap{padding:0 0 2rem}
 .map{width:100%;height:320px;border:1px solid #eef1ff;border-radius:12px}
 
-
-/* Footer */
+/* ==== Footer ==== */
 .footer{padding:2rem 0;border-top:1px solid #eef1ff;background:#fff}
 .footnav{display:flex;gap:1rem;flex-wrap:wrap}
 .legal{border-top:1px solid #eef1ff;margin-top:1rem;padding-top:1rem}
 .small{font-size:.9rem}
 .muted{color:var(--muted)}
 
-
-/* Helpers */
+/* ==== Хелперы ==== */
 .align-end{align-self:end;justify-self:end}
