@@ -11,6 +11,7 @@
     :root {
       --bg: #ffffff; --card: #f8fafc; --text: #0f172a; --dim: #64748b;
       --accent: #ea580c; --blue: #1e40af; --green: #16a34a;
+      --header-bg: #1e293b; --header-text: #f1f5f9;
       --shadow: 0 8px 30px rgba(0,0,0,0.08);
     }
     * { margin: 0; padding: 0; box-sizing: border-box }
@@ -22,68 +23,199 @@
     .container { width: min(1100px, 92%); margin: 0 auto }
     
     /* Header */
-    .header { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.95); 
-              backdrop-filter: blur(10px); border-bottom: 1px solid #e2e8f0; z-index: 1000; }
-    .header__inner { display: flex; align-items: center; justify-content: space-between; 
-                     padding: 1rem 0; min-height: 70px; }
+    .header { 
+      background: var(--header-bg); color: var(--header-text);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    }
+    .header__top {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 0; border-bottom: 1px solid #334155;
+    }
+    .slogan { 
+      display: flex; align-items: center; gap: 1rem;
+      font-size: 0.9rem; color: #cbd5e1;
+    }
     .logo { display: flex; align-items: center; gap: 0.75rem; }
-    .logo__img { width: 40px; height: 40px; border-radius: 8px; }
-    .logo__text { font-weight: 700; font-size: 1.1rem; }
+    .logo__img { width: 32px; height: 32px; border-radius: 6px; }
+    .logo__text { font-weight: 700; font-size: 1rem; color: white; }
+    
+    /* Language Switcher */
+    .language-switcher {
+      display: flex; background: #334155; border-radius: 8px; padding: 2px;
+    }
+    .lang-btn {
+      padding: 0.4rem 0.8rem; border: none; background: transparent;
+      color: #cbd5e1; border-radius: 6px; cursor: pointer;
+      font-size: 0.85rem; transition: all 0.3s ease;
+    }
+    .lang-btn.active {
+      background: var(--accent); color: white;
+    }
+    
+    /* Navigation */
+    .nav { position: relative; }
+    .nav__toggle {
+      background: var(--accent); color: white; border: none;
+      padding: 0.8rem 1.2rem; border-radius: 8px; cursor: pointer;
+      display: flex; align-items: center; gap: 0.5rem; font-weight: 600;
+    }
+    .nav__menu {
+      position: absolute; top: 100%; right: 0; background: white;
+      border-radius: 12px; box-shadow: var(--shadow); padding: 0.5rem;
+      min-width: 200px; display: none; margin-top: 0.5rem;
+    }
+    .nav__menu.show { display: block; }
+    .nav__link {
+      display: block; padding: 0.8rem 1rem; color: var(--text);
+      text-decoration: none; border-radius: 6px; transition: background 0.3s;
+    }
+    .nav__link:hover { background: #f1f5f9; }
+    .nav__link--phone {
+      background: var(--blue); color: white; font-weight: 600;
+      margin-top: 0.5rem;
+    }
     
     /* Hero */
     .hero { 
       background: linear-gradient(135deg, #fff 0%, #fef7ed 100%);
-      padding: 120px 0 80px; margin-top: 70px;
+      padding: 140px 0 80px; margin-top: 100px;
     }
-    .hero__grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-    @media (min-width: 768px) { .hero__grid { grid-template-columns: 1fr 1fr; } }
+    .hero__grid { 
+      display: grid; grid-template-columns: 1fr; gap: 2rem;
+      align-items: center;
+    }
+    @media (min-width: 768px) { 
+      .hero__grid { grid-template-columns: 1.2fr 0.8fr; }
+    }
     
-    .pricing-card { background: var(--card); padding: 2rem; border-radius: 16px; box-shadow: var(--shadow); }
+    .pricing-card { 
+      background: var(--card); padding: 2rem; border-radius: 16px; 
+      box-shadow: var(--shadow); text-align: center;
+    }
     .price { font-size: 2.5rem; font-weight: 800; color: var(--accent); margin: 0.5rem 0; }
+    
+    /* Price Cards */
+    .price-cards {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      margin: 2rem 0;
+    }
+    .price-card {
+      background: white; padding: 1.5rem; border-radius: 12px; 
+      box-shadow: var(--shadow); text-align: center; flex: 1;
+      min-width: 200px; max-width: 250px;
+    }
     
     /* Floating buttons */
     .floating-buttons {
-      position: fixed; bottom: 2rem; right: 2rem; display: flex; flex-direction: column; gap: 1rem; z-index: 1000;
+      position: fixed; bottom: 2rem; right: 2rem; 
+      display: flex; flex-direction: column; gap: 1rem; z-index: 1000;
     }
     .floating-btn {
-      width: 60px; height: 60px; border-radius: 50%; border: none; background: var(--accent);
-      color: white; font-size: 1.2rem; box-shadow: var(--shadow); cursor: pointer;
-      transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;
+      width: 60px; height: 60px; border-radius: 50%; border: none; 
+      background: var(--accent); color: white; font-size: 1.2rem; 
+      box-shadow: var(--shadow); cursor: pointer; transition: all 0.3s ease;
+      display: flex; align-items: center; justify-content: center;
     }
-    .floating-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(234, 88, 12, 0.3); }
+    .floating-btn:hover { 
+      transform: translateY(-3px); 
+      box-shadow: 0 12px 25px rgba(234, 88, 12, 0.3); 
+    }
     .floating-btn.phone { background: var(--blue); }
     .floating-btn.whatsapp { background: var(--green); }
     
     /* Sections */
     .section { padding: 4rem 0; }
-    .section__title { font-size: 1.8rem; margin-bottom: 2rem; text-align: center; }
+    .section__title { 
+      font-size: 2rem; margin-bottom: 3rem; text-align: center;
+      color: var(--text);
+    }
     
-    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-    .service-card { background: var(--card); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow); }
+    .services { 
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      gap: 2rem; 
+    }
+    .service-card { 
+      background: white; padding: 2rem; border-radius: 16px; 
+      box-shadow: var(--shadow); text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover { transform: translateY(-5px); }
+    
+    /* Buttons */
+    .btn { 
+      display: inline-block; padding: 1rem 2rem; border-radius: 10px;
+      font-weight: 600; text-decoration: none; text-align: center;
+      transition: all 0.3s ease; border: none; cursor: pointer;
+      width: 100%; margin: 0.5rem 0;
+    }
+    .btn--primary { background: var(--accent); color: white; }
+    .btn--primary:hover { background: #d5541a; }
+    .btn--secondary { background: var(--blue); color: white; }
+    .btn--success { background: var(--green); color: white; }
     
     /* Footer */
-    .footer { background: var(--card); padding: 3rem 0 1rem; margin-top: 2rem; }
-    .footer__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .footer { background: var(--header-bg); color: var(--header-text); 
+             padding: 3rem 0 1rem; margin-top: 2rem; }
+    .footer__grid { 
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 2rem; 
+    }
     
     /* Utility */
     .text-center { text-align: center; }
     .text-dim { color: var(--dim); }
     .mt-2 { margin-top: 2rem; }
+    .mb-1 { margin-bottom: 1rem; }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header__top { flex-direction: column; gap: 1rem; text-align: center; }
+      .slogan { justify-content: center; }
+      .hero { padding: 120px 0 60px; margin-top: 120px; }
+      .price-cards { flex-direction: column; align-items: center; }
+      .price-card { max-width: 100%; }
+    }
   </style>
 </head>
 <body>
 
 <!-- Header -->
 <header class="header">
-  <div class="container header__inner">
-    <a href="./" class="logo">
-      <img src="assets/logo-llock.png" alt="L.LOCK" class="logo__img">
-      <span class="logo__text">L.LOCK</span>
-    </a>
-    <nav>
-      <a href="tel:+491755328410" style="background: var(--blue); color: white; padding: 0.7rem 1.2rem; 
-         border-radius: 10px; font-weight: 600;">+49 175 5328410</a>
-    </nav>
+  <div class="container">
+    <!-- Верхняя строка с логотипом и слоганом -->
+    <div class="header__top">
+      <div class="slogan">
+        <div class="logo">
+          <img src="assets/logo-llock.png" alt="L.LOCK" class="logo__img">
+          <span class="logo__text">L.LOCK</span>
+        </div>
+        <span>Слесарь в Берлине 24/7 • Честные цены</span>
+      </div>
+      
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <!-- Переключатель языка -->
+        <div class="language-switcher">
+          <button class="lang-btn active" data-lang="ru">RU</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
+        
+        <!-- Выпадающее меню -->
+        <nav class="nav">
+          <button class="nav__toggle">
+            Меню ☰
+          </button>
+          <div class="nav__menu" id="navMenu">
+            <a href="./" class="nav__link">Главная</a>
+            <a href="uslugi.html" class="nav__link">Услуги</a>
+            <a href="ceny.html" class="nav__link">Цены</a>
+            <a href="otzyvy.html" class="nav__link">Отзывы</a>
+            <a href="blog.html" class="nav__link">Блог</a>
+            <a href="kontakt.html" class="nav__link">Контакты</a>
+            <a href="tel:+491755328410" class="nav__link nav__link--phone">📞 +49 175 5328410</a>
+          </div>
+        </nav>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -91,57 +223,102 @@
 <section class="hero">
   <div class="container">
     <div class="hero__grid">
-      <div>
-        <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Слесарь в Берлине 24/7</h1>
-        <p class="text-dim" style="font-size: 1.2rem; margin-bottom: 2rem;">Честные фиксированные цены • Быстрый выезд</p>
+      <div style="text-align: center;">
+        <h1 style="font-size: 2.8rem; margin-bottom: 1.5rem; line-height: 1.2;">
+          Слесарь в Берлине<br>24/7
+        </h1>
+        <p class="text-dim" style="font-size: 1.3rem; margin-bottom: 3rem;">
+          Честные фиксированные цены • Быстрый выезд за 15-30 минут
+        </p>
         
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
-          <div style="background: white; padding: 1rem; border-radius: 10px; box-shadow: var(--shadow);">
+        <!-- Карточки с ценами -->
+        <div class="price-cards">
+          <div class="price-card">
             <div class="text-dim">Дверь захлопнулась</div>
             <div class="price">90€</div>
+            <p class="text-dim small">Без повреждений</p>
           </div>
-          <div style="background: white; padding: 1rem; border-radius: 10px; box-shadow: var(--shadow);">
+          <div class="price-card">
             <div class="text-dim">Дверь на ключ</div>
             <div class="price">150€</div>
+            <p class="text-dim small">Сложные случаи</p>
+          </div>
+          <div class="price-card">
+            <div class="text-dim">Открытие авто</div>
+            <div class="price">190€</div>
+            <p class="text-dim small">Без царапин</p>
           </div>
         </div>
       </div>
       
+      <!-- Блок срочного вызова -->
       <div class="pricing-card">
-        <h3 style="margin-bottom: 1rem;">Срочный вызов</h3>
-        <p class="text-dim" style="margin-bottom: 1.5rem;">Работаем 24/7 по всему Берлину</p>
-        <a href="tel:+491755328410" style="display: block; background: var(--accent); color: white; 
-           text-align: center; padding: 1rem; border-radius: 10px; font-weight: 600; margin-bottom: 1rem;">
-          📞 Позвонить сейчас
-        </a>
-        <a href="https://wa.me/491755328410" style="display: block; background: var(--green); color: white; 
-           text-align: center; padding: 1rem; border-radius: 10px; font-weight: 600;">
-          💬 Написать в WhatsApp
-        </a>
+        <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem;">Срочный вызов</h3>
+        <p class="text-dim" style="margin-bottom: 2rem; line-height: 1.5;">
+          Работаем 24/7 по всему Берлину и области.<br>
+          Быстрый выезд за 15-30 минут.
+        </p>
+        
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <a href="tel:+491755328410" class="btn btn--primary">
+            📞 Позвонить сейчас
+          </a>
+          <a href="https://wa.me/491755328410" class="btn btn--success">
+            💬 WhatsApp
+          </a>
+          <a href="kontakt.html#form" class="btn btn--secondary">
+            📝 Online заказ
+          </a>
+        </div>
+        
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0;">
+          <p class="text-dim small">
+            ⚡ Выезд за 15-30 минут<br>
+            💰 Фиксированная цена<br>
+            🛠️ Без повреждений
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Services -->
+<!-- Services Section -->
 <section class="section">
   <div class="container">
-    <h2 class="section__title">Услуги и цены</h2>
+    <h2 class="section__title">Наши услуги</h2>
     <div class="services">
       <div class="service-card">
-        <h3>Вскрытие двери</h3>
+        <h3 style="margin-bottom: 1rem;">Вскрытие дверей</h3>
         <div class="price">90€ - 150€</div>
-        <p class="text-dim">Без повреждений • 15-30 минут</p>
+        <p class="text-dim" style="margin: 1rem 0;">
+          Аккуратное вскрытие без повреждений дверной коробки и замка
+        </p>
+        <a href="tel:+491755328410" class="btn btn--primary">
+          Вызвать мастера
+        </a>
       </div>
+      
       <div class="service-card">
-        <h3>Открытие авто</h3>
+        <h3 style="margin-bottom: 1rem;">Открытие авто</h3>
         <div class="price">190€</div>
-        <p class="text-dim">Без царапин • 10-20 минут</p>
+        <p class="text-dim" style="margin: 1rem 0;">
+          Без царапин и вмятин. Современное оборудование
+        </p>
+        <a href="tel:+491755328410" class="btn btn--primary">
+          Вызвать мастера
+        </a>
       </div>
+      
       <div class="service-card">
-        <h3>Срочный выезд</h3>
-        <div class="price">24/7</div>
-        <p class="text-dim">По Берлину и области</p>
+        <h3 style="margin-bottom: 1rem;">Замена замков</h3>
+        <div class="price">от 80€</div>
+        <p class="text-dim" style="margin: 1rem 0;">
+          Установка новых замков любой сложности с гарантией
+        </p>
+        <a href="tel:+491755328410" class="btn btn--primary">
+          Вызвать мастера
+        </a>
       </div>
     </div>
   </div>
@@ -158,26 +335,59 @@
   <div class="container">
     <div class="footer__grid">
       <div>
-        <strong>L.LOCK Schlüsseldienst</strong>
+        <strong style="font-size: 1.2rem;">L.LOCK Schlüsseldienst</strong>
         <p class="text-dim mt-2">Берлин 24/7<br>Честные фиксированные цены</p>
       </div>
       <div>
         <strong>Контакты</strong>
         <p class="text-dim mt-2">
-          <a href="tel:+491755328410" style="color: var(--dim);">+49 175 5328410</a><br>
+          <a href="tel:+491755328410" style="color: #cbd5e1; text-decoration: none;">
+            +49 175 5328410
+          </a><br>
           Круглосуточно
         </p>
       </div>
+      <div>
+        <strong>Услуги</strong>
+        <p class="text-dim mt-2">
+          Вскрытие дверей<br>
+          Открытие авто<br>
+          Замена замков
+        </p>
+      </div>
     </div>
-    <div style="border-top: 1px solid #e2e8f0; margin-top: 2rem; padding-top: 1rem; text-align: center;">
-      <p class="text-dim">© 2024 L.LOCK. Все права защищены.</p>
+    <div style="border-top: 1px solid #334155; margin-top: 2rem; padding-top: 1.5rem; text-align: center;">
+      <p class="text-dim">© <span id="year"></span> L.LOCK. Все права защищены.</p>
     </div>
   </div>
 </footer>
 
 <script>
+  // Переключение меню
+  document.querySelector('.nav__toggle').addEventListener('click', function() {
+    document.getElementById('navMenu').classList.toggle('show');
+  });
+
+  // Переключение языка
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      // Здесь можно добавить логику смены языка
+    });
+  });
+
+  // Год в футере
   document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('footer .text-dim').innerHTML = '© ' + new Date().getFullYear() + ' L.LOCK. Все права защищены.';
+    document.getElementById('year').textContent = new Date().getFullYear();
+  });
+
+  // Закрытие меню при клике вне его
+  document.addEventListener('click', function(event) {
+    const nav = document.querySelector('.nav');
+    if (!nav.contains(event.target)) {
+      document.getElementById('navMenu').classList.remove('show');
+    }
   });
 </script>
 
