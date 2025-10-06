@@ -1,144 +1,164 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>L.LOCK Schlüsseldienst Berlin – 24/7 Türöffnung zum Festpreis</title>
-  <meta name="description" content="L.LOCK Schlüsseldienst Berlin: 24/7 Türöffnung zum Festpreis. Zugefallene Tür 90€, verschlossen 150€, Autoöffnung 190€. Nacht +50% (20–08), Wochenende/Feiertage +75%, außerhalb Berlin +1,5€/km. Ohne versteckte Kosten." />
+  <title>L.LOCK — Слесарь в Берлине 24/7 • честные цены</title>
+  <meta name="description" content="L.LOCK: вскрытие дверей и авто в Берлине 24/7. Фикс-цены: дверь захлопнулась 90€, закрыта на ключ 150€, авто 190€. Ночь +50%, выходные +75%, вне Берлина +1,5€/км." />
   <link rel="icon" href="favicon.ico" />
-  <!-- ВАЖНО: именно этот путь -->
-  <link rel="stylesheet" href="assets/style.css?v=6" />
+  <link rel="stylesheet" href="assets/style.css?v=8" />
 </head>
 <body>
 
-  <header class="topbar">
-    <div class="container">
-      <div class="brand">
-        <img src="assets/logo-llock.png" alt="L.LOCK Logo" class="logo" />
-        <span class="brand-name">L.LOCK Schlüsseldienst Berlin</span>
-      </div>
-      <a class="call-now" href="tel:+491755328410">📞 +49 175 5328410</a>
-    </div>
-  </header>
+<header class="hdr">
+  <div class="container hdr__row">
+    <a class="brand" href="./">
+      <img src="assets/logo-llock.png" alt="L.LOCK" class="brand__logo" />
+      <span class="brand__name">L.LOCK Schlüssel­dienst Berlin</span>
+    </a>
+    <nav class="nav">
+      <a href="./" class="nav__link nav__link--active">Главная</a>
+      <a href="uslugi.html" class="nav__link">Услуги</a>
+      <a href="ceny.html" class="nav__link">Цены</a>
+      <a href="otzyvy.html" class="nav__link">Отзывы</a>
+      <a href="kontakt.html" class="nav__link">Контакты</a>
+      <a href="tel:+491755328410" class="btn btn--call">+49 175 5328410</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- hero-light ДОЛЖЕН быть тут -->
-  <section class="hero hero-light">
-    <div class="container hero-inner">
-      <h1>Tür zu? Wir öffnen <span class="accent">schnell & fair</span> – 24/7</h1>
-      <p class="lead">
-        Feste Preise ohne „ab“ und ohne versteckte Kosten. Nacht (20:00–08:00) +50%, Wochenende/Feiertage +75%, außerhalb Berlin +1,5 € / km.
-      </p>
-      <div class="cta-row">
-        <a class="btn" href="tel:+491755328410">Sofort anrufen</a>
-        <a class="btn ghost" href="#preise">Preise ansehen</a>
+<!-- HERO с тёплым фотофоном + градиентом (как у Retter, но наш) -->
+<section class="hero hero--photo">
+  <div class="container hero__inner">
+    <div class="trust">
+      <div class="trust__row">
+        <img class="trust__logo" src="assets/logo-llock.png" alt="L.LOCK" />
+        <div class="trust__text">
+          <div class="trust__title">СЛЕСАРЬ В ГЕРМАНИИ</div>
+          <div class="trust__subtitle">Звонок мастеру — напрямую!</div>
+          <div class="stars">★★★★★ <span>5,0 / 5</span> <span class="chip chip--orange">Честная цена</span></div>
+          <ul class="ticks">
+            <li>Без посредников</li>
+            <li>Фиксированная цена</li>
+            <li>Быстрый выезд на место</li>
+          </ul>
+          <div class="pay">
+            <span class="pay__chip">Apple Pay</span>
+            <span class="pay__chip">Mastercard</span>
+            <span class="pay__chip">PayPal</span>
+            <span class="pay__chip">VISA</span>
+            <span class="pay__chip">G Pay</span>
+          </div>
+
+          <div class="cta-bar">
+            <a class="cta cta--dark" href="kontakt.html#form">🧾 Online заказ</a>
+            <a class="cta cta--orange" href="tel:+491755328410">📞 +49 175 5328410</a>
+            <a class="cta cta--green" href="https://wa.me/491755328410?text=Здравствуйте!%20Нужна%20помощь%20со%20вскрытием.">🟢 WhatsApp чат</a>
+          </div>
+        </div>
       </div>
-      <ul class="badges">
-        <li>24/7 Notdienst</li>
-        <li>Transparente Festpreise</li>
-        <li>Schonende Öffnung</li>
+    </div>
+  </div>
+</section>
+
+<!-- Плашка с «две цены» -->
+<section class="section">
+  <div class="container">
+    <div class="panel">
+      <h2 class="panel__title">Только две цены!</h2>
+      <div class="grid-2">
+        <div class="panel__cell">
+          Дверь захлопнулась: <strong>90€</strong>
+        </div>
+        <div class="panel__cell">
+          Дверь закрыта на ключ: <strong>150€</strong>
+        </div>
+      </div>
+      <p class="muted small">Ночь (20:00–08:00) +50%, выходные/праздники +75%, за пределами Берлина +1,5 € / км.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Прозрачность / преимущества -->
+<section class="section section--alt">
+  <div class="container grid-2">
+    <div>
+      <h2>Прозрачные цены — без сюрпризов</h2>
+      <p class="dim">Всегда согласуем стоимость до выезда. В 90% случаев открываем без повреждений.</p>
+      <ul class="list">
+        <li>По Берлину — без оплаты за выезд</li>
+        <li>За городом: <strong>+1,5 € / км</strong></li>
+        <li>Ночь <strong>+50%</strong> (20:00–08:00)</li>
+        <li>Выходные/праздники <strong>+75%</strong></li>
       </ul>
     </div>
-  </section>
-
-  <section class="section alt">
-    <div class="container grid-2">
-      <div>
-        <h2>100% Transparenz</h2>
-        <p class="dim">Fixe Preise. Keine versteckten Gebühren. Zuschläge nur nachts, am Wochenende/Feiertagen und außerhalb Berlins.</p>
-        <ul class="check">
-          <li>Keine Anfahrt innerhalb Berlin</li>
-          <li>Außerhalb Berlin: <strong>+1,5 € / km</strong></li>
-          <li>Nachtzuschlag <strong>+50%</strong> (20:00–08:00)</li>
-          <li>Wochenende/Feiertage <strong>+75%</strong></li>
-        </ul>
+    <aside class="card">
+      <h3>Горячая линия 24/7</h3>
+      <a class="hotline" href="tel:+491755328410">+49 175 5328410</a>
+      <p class="muted">Берлин и до 30 км вокруг</p>
+      <div class="mini-cta">
+        <a class="btn btn--ghost" href="kontakt.html#form">Оставить заявку</a>
       </div>
-      <aside class="card lift">
-        <h3>Hotline</h3>
-        <a class="hotline" href="tel:+491755328410">+49 175 5328410</a>
-        <p class="muted">Ganz Berlin & bis 30 km Umland.</p>
-      </aside>
-    </div>
-  </section>
+    </aside>
+  </div>
+</section>
 
-  <section class="section" id="preise">
-    <div class="container">
-      <h2>Festpreise</h2>
-      <div class="cards">
-        <article class="card lift">
-          <h3>Tür nur zugefallen</h3>
-          <div class="price">90 €</div>
-          <p class="dim">Schonende Öffnung ohne Beschädigung.</p>
-        </article>
-        <article class="card lift">
-          <h3>Tür verschlossen</h3>
-          <div class="price">150 €</div>
-          <p class="dim">Wenn abgeschlossen wurde oder das Schloss blockiert.</p>
-        </article>
-        <article class="card lift">
-          <h3>Autoöffnung</h3>
-          <div class="price">190 €</div>
-          <p class="dim">Fahrzeugöffnung für gängige Marken und Modelle.</p>
-        </article>
-      </div>
-      <p class="note dim">* Nacht 20:00–08:00 +50%. Wochenende/Feiertage +75%. Außerhalb Berlin +1,5 € / km.</p>
+<!-- Карточки услуг/цен (дополнительно к двум ценам) -->
+<section class="section">
+  <div class="container">
+    <h2>Популярные услуги</h2>
+    <div class="cards">
+      <article class="card lift">
+        <h3>Вскрытие захлопнувшейся двери</h3>
+        <div class="price">90 €</div>
+        <p class="dim">Аккуратно, без следов.</p>
+      </article>
+      <article class="card lift">
+        <h3>Вскрытие закрытой на ключ</h3>
+        <div class="price">150 €</div>
+        <p class="dim">Если повернули ключ или заклинило личинку.</p>
+      </article>
+      <article class="card lift">
+        <h3>Открытие авто</h3>
+        <div class="price">190 €</div>
+        <p class="dim">Без царапин и вмятин.</p>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section alt" id="gebiet">
-    <div class="container">
-      <h2>Einsatzgebiet: Berlin +30 km</h2>
-      <div class="grid-2">
-        <div>
-          <h3>Berlin (Bezirke)</h3>
-          <ul class="cols">
-            <li>Mitte</li><li>Friedrichshain-Kreuzberg</li><li>Pankow</li><li>Charlottenburg-Wilmersdorf</li>
-            <li>Spandau</li><li>Steglitz-Zehlendorf</li><li>Tempelhof-Schöneberg</li><li>Neukölln</li>
-            <li>Treptow-Köpenick</li><li>Marzahn-Hellersdorf</li><li>Lichtenberg</li><li>Reinickendorf</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Umland (Beispiele)</h3>
-          <ul class="cols" id="umland-list"></ul>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- Быстрые контакты -->
+<section class="section section--alt">
+  <div class="container quick">
+    <a class="cta cta--orange" href="tel:+491755328410">Позвонить</a>
+    <a class="cta cta--dark" href="kontakt.html#form">Online заказ</a>
+    <a class="cta cta--green" href="https://wa.me/491755328410?text=Здравствуйте!%20Нужна%20помощь%20со%20вскрытием.">WhatsApp</a>
+  </div>
+</section>
 
-  <section class="section">
-    <div class="container grid-2">
-      <div>
-        <h2>Warum L.LOCK?</h2>
-        <p class="dim">Schnelle Anfahrt, schonende Öffnung, ehrliche Kommunikation und faire Festpreise – genau das, что man nachts um 3 braucht.</p>
-        <ul class="check">
-          <li>In 90% der Fälle zerstörungsfrei</li>
-          <li>EC/Kreditkarte/Bar</li>
-          <li>Rechnung mit ausgewiesener MwSt</li>
-        </ul>
-      </div>
-      <a class="btn big align-end" href="kontakt.html">Alle Kontakte ansehen →</a>
+<footer class="ftr">
+  <div class="container ftr__row">
+    <div>
+      <strong>L.LOCK Schlüsseldienst Berlin</strong>
+      <p>24/7 • честные фикс-цены</p>
+      <p>Телефон: <a href="tel:+491755328410">+49 175 5328410</a></p>
     </div>
-  </section>
+    <nav class="footnav">
+      <a href="uslugi.html">Услуги</a>
+      <a href="ceny.html">Цены</a>
+      <a href="otzyvy.html">Отзывы</a>
+      <a href="kontakt.html">Контакты</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </div>
+  <div class="container legal">
+    <p class="small muted">© <span id="year"></span> L.LOCK. Все права защищены.</p>
+  </div>
+</footer>
 
-  <footer class="footer">
-    <div class="container row">
-      <div>
-        <strong>L.LOCK Schlüsseldienst Berlin</strong>
-        <p>24/7 Notdienst • Festpreise ohne versteckte Kosten</p>
-        <p>Telefon: <a href="tel:+491755328410">+49 175 5328410</a></p>
-      </div>
-      <nav class="footnav">
-        <a href="blog.html">Blog</a>
-        <a href="bewertungen.html">Bewertungen</a>
-        <a href="kontakt.html">Kontakt</a>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-      </nav>
-    </div>
-    <div class="container legal">
-      <p class="small muted">© <span id="year"></span> L.LOCK Schlüsseldienst Berlin. Alle Rechte vorbehalten.</p>
-    </div>
-  </footer>
+<a class="floating-call" href="tel:+491755328410">Позвонить</a>
 
-  <script src="assets/script.js?v=2"></script>
+<script src="assets/script.js?v=3"></script>
 </body>
 </html>
