@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Услуги — L.LOCK Слесарь в Берлине 24/7</title>
+  <meta name="description" content="Профессиональные услуги слесаря в Берлине: вскрытие дверей, открытие авто, замена замков. Фиксированные цены 24/7." />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    /* === DARK MINIMAL STYLE === */
+    :root {
+      --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --dim: #94a3b8;
+      --accent: #ea580c; --blue: #3b82f6; --green: #22c55e;
+      --header-bg: #020617; --header-text: #f1f5f9;
+      --section-bg: #1e293b;
+      --shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6;
+      max-width: 100vw; overflow-x: hidden;
+    }
+    .container { width: min(1100px, 92%); margin: 0 auto }
+    
+    /* Header */
+    .header { 
+      background: var(--header-bg); color: var(--header-text);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      border-bottom: 1px solid #334155;
+    }
+    .header__top {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 0;
+    }
+    .slogan { 
+      display: flex; align-items: center; gap: 1.5rem;
+      font-size: 1rem; color: #cbd5e1;
+    }
+    .logo { 
+      display: flex; align-items: center; gap: 1rem;
+      text-decoration: none;
+    }
+    .logo__img { 
+      width: 70px; height: 70px; border-radius: 12px; 
+      border: 2px solid var(--accent); box-shadow: 0 4px 20px rgba(234, 88, 12, 0.3);
+      transition: transform 0.3s ease;
+    }
+    .logo__img:hover { transform: scale(1.05); }
+    .logo__text { 
+      font-weight: 800; font-size: 1.4rem; color: white;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Language Switcher */
+    .language-switcher {
+      display: flex; background: #334155; border-radius: 10px; padding: 3px;
+    }
+    .lang-btn {
+      padding: 0.5rem 1rem; border: none; background: transparent;
+      color: #cbd5e1; border-radius: 8px; cursor: pointer;
+      font-size: 0.9rem; font-weight: 600; transition: all 0.3s ease;
+    }
+    .lang-btn.active {
+      background: var(--accent); color: white;
+    }
+    
+    /* Navigation */
+    .nav { position: relative; }
+    .nav__toggle {
+      background: var(--accent); color: white; border: none;
+      padding: 0.8rem 1.5rem; border-radius: 10px; cursor: pointer;
+      display: flex; align-items: center; gap: 0.5rem; font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .nav__toggle:hover { background: #d5541a; }
+    .nav__menu {
+      position: absolute; top: 100%; right: 0; background: var(--card);
+      border-radius: 12px; box-shadow: var(--shadow); padding: 0.8rem;
+      min-width: 220px; display: none; margin-top: 0.5rem;
+      border: 1px solid #334155;
+    }
+    .nav__menu.show { display: block; }
+    .nav__link {
+      display: block; padding: 0.8rem 1rem; color: var(--text);
+      text-decoration: none; border-radius: 8px; transition: all 0.3s;
+      font-weight: 500;
+    }
+    .nav__link:hover { background: #334155; }
+    .nav__link--active {
+      background: var(--accent); color: white;
+    }
+    .nav__link--phone {
+      background: var(--blue); color: white; font-weight: 700;
+      margin-top: 0.5rem; text-align: center; font-size: 1.1rem;
+    }
+    
+    /* Hero */
+    .hero { 
+      background: linear-gradient(135deg, var(--bg) 0%, #1e293b 50%, #0f172a 100%);
+      padding: 160px 0 80px; margin-top: 100px;
+      position: relative; overflow: hidden;
+      text-align: center;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 70% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    /* Services Grid */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem; margin: 3rem 0;
+    }
+    .service-card { 
+      background: var(--card); padding: 2.5rem; border-radius: 20px; 
+      box-shadow: var(--shadow); border: 1px solid #334155;
+      transition: all 0.3s ease; position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 4px; background: var(--accent);
+    }
+    .service-card:hover { 
+      transform: translateY(-8px); 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .service-card__icon {
+      font-size: 3rem; margin-bottom: 1.5rem; display: block;
+    }
+    .service-card__price {
+      font-size: 2.5rem; font-weight: 800; color: var(--accent);
+      margin: 1rem 0;
+    }
+    .service-card__features {
+      list-style: none; margin: 1.5rem 0;
+    }
+    .service-card__features li {
+      padding: 0.5rem 0; color: var(--dim);
+      position: relative; padding-left: 1.5rem;
+    }
+    .service-card__features li::before {
+      content: '✓'; position: absolute; left: 0;
+      color: var(--accent); font-weight: bold;
+    }
+    
+    /* Process Steps */
+    .process {
+      background: var(--section-bg); padding: 5rem 0;
+    }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem; margin-top: 3rem;
+    }
+    .process-step {
+      text-align: center; padding: 2rem;
+    }
+    .process-step__number {
+      width: 60px; height: 60px; background: var(--accent);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-size: 1.5rem; font-weight: 800;
+      margin: 0 auto 1.5rem;
+    }
+    
+    /* Emergency Banner */
+    .emergency-banner {
+      background: linear-gradient(135deg, var(--accent) 0%, #d5541a 100%);
+      padding: 3rem; border-radius: 20px; text-align: center;
+      margin: 4rem 0; box-shadow: var(--shadow);
+    }
+    
+    /* Buttons */
+    .btn { 
+      display: inline-block; padding: 1.2rem 2rem; border-radius: 12px;
+      font-weight: 700; text-decoration: none; text-align: center;
+      transition: all 0.3s ease; border: none; cursor: pointer;
+      width: 100%; margin: 0.5rem 0; font-size: 1.1rem;
+    }
+    .btn--primary { background: var(--accent); color: white; }
+    .btn--primary:hover { 
+      background: #d5541a; transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(234, 88, 12, 0.3);
+    }
+    .btn--secondary { background: var(--blue); color: white; }
+    .btn--secondary:hover { 
+      background: #2563eb; transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+    }
+    .btn--large {
+      padding: 1.5rem 3rem; font-size: 1.3rem;
+      width: auto; display: inline-block;
+    }
+    
+    /* Sections */
+    .section { padding: 5rem 0; }
+    .section__title { 
+      font-size: 2.5rem; margin-bottom: 1rem; text-align: center;
+      color: var(--text); font-weight: 700;
+    }
+    .section__subtitle {
+      font-size: 1.2rem; color: var(--dim); text-align: center;
+      margin-bottom: 3rem; max-width: 600px; margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Floating buttons */
+    .floating-buttons {
+      position: fixed; bottom: 2rem; right: 2rem; 
+      display: flex; flex-direction: column; gap: 1rem; z-index: 1000;
+    }
+    .floating-btn {
+      width: 70px; height: 70px; border-radius: 50%; border: none; 
+      background: var(--accent); color: white; font-size: 1.5rem; 
+      box-shadow: var(--shadow); cursor: pointer; transition: all 0.3s ease;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .floating-btn:hover { 
+      transform: translateY(-5px) scale(1.1); 
+      box-shadow: 0 15px 30px rgba(234, 88, 12, 0.4); 
+    }
+    .floating-btn.phone { background: var(--blue); }
+    .floating-btn.whatsapp { background: var(--green); }
+    
+    /* Footer */
+    .footer { 
+      background: var(--header-bg); color: var(--header-text); 
+      padding: 4rem 0 2rem; border-top: 1px solid #334155;
+    }
+    .footer__grid { 
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 3rem; 
+    }
+    
+    /* Utility */
+    .text-center { text-align: center; }
+    .text-dim { color: var(--dim); }
+    .mt-2 { margin-top: 2rem; }
+    .mt-3 { margin-top: 3rem; }
+    .mb-1 { margin-bottom: 1rem; }
+    .small { font-size: 0.9rem; }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header__top { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .slogan { justify-content: center; flex-direction: column; gap: 1rem; }
+      .logo__img { width: 60px; height: 60px; }
+      .hero { padding: 140px 0 60px; margin-top: 140px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .floating-btn { width: 60px; height: 60px; font-size: 1.3rem; }
+      .btn--large { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="container">
+    <div class="header__top">
+      <div class="slogan">
+        <a href="./" class="logo">
+          <img src="assets/logo-llock.png" alt="L.LOCK" class="logo__img">
+          <span class="logo__text">L.LOCK</span>
+        </a>
+        <span>Слесарь в Берлине 24/7 • Честные фиксированные цены</span>
+      </div>
+      
+      <div style="display: flex; align-items: center; gap: 1.5rem;">
+        <div class="language-switcher">
+          <button class="lang-btn active" data-lang="ru">RU</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
+        
+        <nav class="nav">
+          <button class="nav__toggle">
+            Меню ☰
+          </button>
+          <div class="nav__menu" id="navMenu">
+            <a href="./" class="nav__link">🏠 Главная</a>
+            <a href="uslugi.html" class="nav__link nav__link--active">🔧 Услуги</a>
+            <a href="ceny.html" class="nav__link">💶 Цены</a>
+            <a href="otzyvy.html" class="nav__link">⭐ Отзывы</a>
+            <a href="blog.html" class="nav__link">📝 Блог</a>
+            <a href="kontakt.html" class="nav__link">📞 Контакты</a>
+            <a href="tel:+491755328410" class="nav__link nav__link--phone">📞 +49 175 5328410</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 800;">
+      🔧 Наши услуги
+    </h1>
+    <p class="text-dim" style="font-size: 1.4rem; max-width: 600px; margin: 0 auto;">
+      Профессиональные услуги слесаря в Берлине 24/7. 
+      Быстро, качественно и по фиксированным ценам.
+    </p>
+  </div>
+</section>
+
+<!-- Main Services -->
+<section class="section">
+  <div class="container">
+    <h2 class="section__title">Основные услуги</h2>
+    <p class="section__subtitle">
+      Полный спектр услуг по вскрытию и ремонту замков любой сложности
+    </p>
+    
+    <div class="services-grid">
+      <!-- Вскрытие дверей -->
+      <div class="service-card">
+        <div class="service-card__icon">🚪</div>
+        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Вскрытие дверей</h3>
+        <div class="service-card__price">90€ - 150€</div>
+        <p class="text-dim" style="line-height: 1.6;">
+          Аккуратное вскрытие без повреждений дверной коробки и замка. 
+          Работаем с любыми типами дверей и замков.
+        </p>
+        <ul class="service-card__features">
+          <li>Захлопнувшиеся двери - 90€</li>
+          <li>Закрытые на ключ - 150€</li>
+          <li>Без повреждений</li>
+          <li>15-30 минут</li>
+          <li>Любые типы замков</li>
+        </ul>
+        <a href="tel:+491755328410" class="btn btn--primary">
+          🚀 Вызвать мастера
+        </a>
+      </div>
+      
+      <!-- Открытие авто -->
+      <div class="service-card">
+        <div class="service-card__icon">🚗</div>
+        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Открытие автомобилей</h3>
+        <div class="service-card__price">190€</div>
+        <p class="text-dim" style="line-height: 1.6;">
+          Без царапин и вмятин. Современное оборудование для любых 
+          марок автомобилей, включая премиум-класс.
+        </p>
+        <ul class="service-card__features">
+          <li>Все марки автомобилей</li>
+          <li>Без повреждений ЛКП</li>
+          <li>10-20 минут</li>
+          <li>Электронные ключи</li>
+          <li>Современное оборудование</li>
+        </ul>
+        <a href="tel:+491755328410" class="btn btn--primary">
+          🚀 Вызвать мастера
+        </a>
+      </div>
+      
+      <!-- Замена замков -->
+      <div class="service-card">
+        <div class="service-card__icon">🔐</div>
+        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Замена и ремонт замков</h3>
+        <div class="service-card__price">от 80€</div>
+        <p class="text-dim" style="line-height: 1.6;">
+          Установка новых замков любой сложности с гарантией. 
+          Подбор и монтаж качественных механизмов.
+        </p>
+        <ul class="service-card__features">
+          <li>Новые замки от 80€</li>
+          <li>Ремонт существующих</li>
+          <li>Гарантия на работу</li>
+          <li>Качественные материалы</li>
+          <li>Консультация по выбору</li>
+        </ul>
+        <a href="tel:+491755328410" class="btn btn--primary">
+          🚀 Вызвать мастера
+        </a>
+      </div>
+      
+      <!-- Аварийное вскрытие -->
+      <div class="service-card">
+        <div class="service-card__icon">🚨</div>
+        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Аварийное вскрытие</h3>
+        <div class="service-card__price">24/7</div>
+        <p class="text-dim" style="line-height: 1.6;">
+          Срочный выезд в любое время суток. Работаем ночью, 
+          в выходные и праздничные дни по всему Берлину.
+        </p>
+        <ul class="service-card__features">
+          <li>Круглосуточный выезд</li>
+          <li>Выезд за 15-30 минут</li>
+          <li>Ночь +50%</li>
+          <li>Выходные +75%</li>
+          <li>За городом +1,5€/км</li>
+        </ul>
+        <a href="tel:+491755328410" class="btn btn--primary">
+          🚀 Вызвать мастера
+        </a>
+      </div>
+      
+      <!-- Установка защиты -->
+      <div class="service-card">
+        <div class="service-card__icon">🛡️</div>
+        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Установка защиты</h3>
+        <div class="service-card__price">от 120€</div>
+        <p class="text-dim" style="line-height: 1.6;">
+          Установка дополнительных систем безопасности: 
+          дополнительные замки, броненакладки, электронные системы.
+        </p>
+        <ul class="service-card__features">
+          <li>Дополнительные замки</li>
+          <li>Броненакладки</li>
+          <li>Электронные системы</li>
+          <li>Консультация по безопасности</li>
+          <li>Гарантия на установку</li>
+        </ul>
+        <a href="tel:+491755328410" class="btn btn--primary">
+          🚀 Вызвать мастера
+        </a>
+      </div>
+      
+      <!-- Консультация -->
+      <div class="service-card">
+        <div class="service-card__icon">💡</div>
+        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Консультация</h3>
+        <div class="service-card__price">Бесплатно</div>
+        <p class="text-dim" style="line-height: 1.6;">
+          Бесплатная консультация по телефону. Поможем оценить 
+          ситуацию и сориентируем по стоимости и времени.
+        </p>
+        <ul class="service-card__features">
+          <li>Бесплатная консультация</li>
+          <li>Оценка по телефону</li>
+          <li>Рекомендации</li>
+          <li>Предварительный расчет</li>
+          <li>Ответы на вопросы</li>
+        </ul>
+        <a href="tel:+491755328410" class="btn btn--secondary">
+          📞 Получить консультацию
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process Section -->
+<section class="process">
+  <div class="container">
+    <h2 class="section__title">Как мы работаем</h2>
+    <p class="section__subtitle">
+      Простой и понятный процесс от вызова до решения вашей проблемы
+    </p>
+    
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-step__number">1</div>
+        <h3 style="margin-bottom: 1rem;">Звонок</h3>
+        <p class="text-dim">
+          Звоните по телефону +49 175 5328410. 
+          Консультация и оценка стоимости - бесплатно.
+        </p>
+      </div>
+      
+      <div class="process-step">
+        <div class="process-step__number">2</div>
+        <h3 style="margin-bottom: 1rem;">Выезд</h3>
+        <p class="text-dim">
+          Выезжаем к вам в течение 15-30 минут. 
+          Работаем 24/7 по всему Берлину.
+        </p>
+      </div>
+      
+      <div class="process-step">
+        <div class="process-step__number">3</div>
+        <h3 style="margin-bottom: 1rem;">Диагностика</h3>
+        <p class="text-dim">
+          Оцениваем ситуацию на месте. 
+          Подтверждаем стоимость и способ решения.
+        </p>
+      </div>
+      
+      <div class="process-step">
+        <div class="process-step__number">4</div>
+        <h3 style="margin-bottom: 1rem;">Решение</h3>
+        <p class="text-dim">
+          Аккуратно решаем проблему без повреждений. 
+          Принимаем различные способы оплаты.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Emergency Banner -->
+<section class="section">
+  <div class="container">
+    <div class="emergency-banner">
+      <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: white;">
+        🚨 Нужна срочная помощь?
+      </h2>
+      <p style="font-size: 1.3rem; margin-bottom: 2rem; color: white; opacity: 0.9;">
+        Работаем 24/7 • Выезд за 15-30 минут • Фиксированные цены
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="tel:+491755328410" class="btn btn--large" style="background: white; color: var(--accent);">
+          📞 Срочный вызов
+        </a>
+        <a href="https://wa.me/491755328410" class="btn btn--large" style="background: var(--green); color: white;">
+          💬 Написать в WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Floating Buttons -->
+<div class="floating-buttons">
+  <button class="floating-btn phone" onclick="window.location.href='tel:+491755328410'">📞</button>
+  <button class="floating-btn whatsapp" onclick="window.open('https://wa.me/491755328410')">💬</button>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <strong style="font-size: 1.3rem; color: var(--accent);">L.LOCK Schlüsseldienst</strong>
+        <p class="text-dim mt-2" style="line-height: 1.6;">
+          🕒 Работаем 24/7<br>
+          💰 Честные фиксированные цены<br>
+          🚗 По всему Берлину и области
+        </p>
+      </div>
+      <div>
+        <strong style="font-size: 1.1rem;">📞 Контакты</strong>
+        <p class="text-dim mt-2" style="line-height: 1.6;">
+          <a href="tel:+491755328410" style="color: #cbd5e1; text-decoration: none; font-weight: 600;">
+            +49 175 5328410
+          </a><br>
+          📧 info@llock.de<br>
+          🕒 Круглосуточно
+        </p>
+      </div>
+      <div>
+        <strong style="font-size: 1.1rem;">🔧 Услуги</strong>
+        <p class="text-dim mt-2" style="line-height: 1.6;">
+          🚪 Вскрытие дверей<br>
+          🚗 Открытие авто<br>
+          🔐 Замена замков<br>
+          🛡️ Установка защиты
+        </p>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #334155; margin-top: 3rem; padding-top: 2rem; text-align: center;">
+      <p class="text-dim">© <span id="year"></span> L.LOCK Schlüsseldienst Berlin. Все права защищены.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Переключение меню
+  document.querySelector('.nav__toggle').addEventListener('cl
