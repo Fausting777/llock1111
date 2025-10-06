@@ -4,61 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>L.LOCK Schlüsseldienst Berlin – 24/7 Türöffnung zum Festpreis</title>
-  <meta name="description" content="L.LOCK Schlüsseldienst Berlin: 24/7 Türöffnung zum Festpreis. Zugefallene Tür 90€, verschlossen 150€, Autoöffnung 190€. Nacht +50% (20–08), Wochenende/Feiertage +75%, außerhalb Berlin +1,5€/km. Keine versteckten Kosten." />
+  <meta name="description" content="L.LOCK Schlüsseldienst Berlin: 24/7 Türöffnung zum Festpreis. Zugefallene Tür 90€, verschlossen 150€, Autoöffnung 190€. Nacht +50% (20–08), Wochenende/Feiertage +75%, außerhalb Berlin +1,5€/km. Ohne versteckte Kosten." />
   <link rel="icon" href="favicon.ico" />
   <link rel="stylesheet" href="./style.css" />
-  <!-- OpenGraph -->
-  <meta property="og:title" content="L.LOCK Schlüsseldienst Berlin – 24/7 Festpreise" />
-  <meta property="og:description" content="Zugefallen 90€, verschlossen 150€, Auto 190€. 24/7, keine versteckten Kosten." />
-  <meta property="og:type" content="website" />
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Locksmith",
-    "name":"L.LOCK Schlüsseldienst Berlin",
-    "telephone":"+49 175 5328410",
-    "areaServed":"Berlin und Umgebung (bis 30 km)",
-    "openingHours":["Mo-Su 00:00-24:00"],
-    "priceRange":"€€",
-    "makesOffer":[
-      {"@type":"Offer","name":"Tür nur zugefallen","price":"90","priceCurrency":"EUR"},
-      {"@type":"Offer","name":"Tür verschlossen","price":"150","priceCurrency":"EUR"},
-      {"@type":"Offer","name":"Autoöffnung","price":"190","priceCurrency":"EUR"}
-    ]
-  }
-  </script>
 </head>
 <body>
-  <!-- Top bar -->
+  <!-- Topbar -->
   <header class="topbar">
     <div class="container">
       <div class="brand">
-        <!-- Встроенный логотип (круг, оранжевый фон; замок красный; L.LOCK белый; слоган по кругу светло-синий) -->
+        <!-- Яркий логотип (увеличен, контраст усилен, обводка) -->
         <svg class="logo" viewBox="0 0 200 200" aria-label="L.LOCK Logo" role="img">
           <defs>
-            <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
-              <feDropShadow dx="0" dy="3" stdDeviation="6" flood-opacity="0.35"/>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#ff8a00" flood-opacity="0.35"/>
             </filter>
             <linearGradient id="lockShine" x1="0" x2="1">
-              <stop offset="0" stop-color="#ff594a"/>
-              <stop offset="1" stop-color="#d81e1e"/>
+              <stop offset="0" stop-color="#ff5a4f"/>
+              <stop offset="1" stop-color="#e11d1d"/>
             </linearGradient>
           </defs>
-          <circle cx="100" cy="100" r="92" fill="#ff8a00" filter="url(#softShadow)"/>
+          <circle cx="100" cy="100" r="92" fill="#ff9a1a" filter="url(#glow)" stroke="#ff7a00" stroke-width="6"/>
+          <!-- белая окантовка для контраста -->
+          <circle cx="100" cy="100" r="96" fill="none" stroke="white" stroke-opacity=".85" stroke-width="6"/>
           <!-- Замок -->
-          <rect x="58" y="95" width="84" height="58" rx="10" fill="url(#lockShine)"/>
+          <rect x="58" y="95" width="84" height="58" rx="12" fill="url(#lockShine)"/>
           <path d="M70 95 v-18 a30 30 0 0 1 60 0 v18 h-14 v-18 a16 16 0 0 0 -32 0 v18z" fill="url(#lockShine)"/>
-          <circle cx="100" cy="121" r="9" fill="#1b1b1b"/>
-          <rect x="97.5" y="121" width="5" height="16" rx="2.5" fill="#1b1b1b"/>
+          <circle cx="100" cy="121" r="9" fill="#0f172a"/>
+          <rect x="97.5" y="121" width="5" height="16" rx="2.5" fill="#0f172a"/>
           <!-- Название -->
-          <text x="100" y="164" text-anchor="middle" font-size="24" font-weight="700" fill="#ffffff" letter-spacing="1">L.LOCK</text>
+          <text x="100" y="164" text-anchor="middle" font-size="26" font-weight="900" fill="#ffffff">L.LOCK</text>
           <!-- Слоган по кругу -->
-          <defs>
-            <path id="circleText" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/>
-          </defs>
-          <text font-size="11" fill="#9dc1ff" font-weight="600">
-            <textPath href="#circleText" startOffset="10%">SCHLÜSSELDIENST • FAIR & TRANSPARENT • BERLIN • 24/7 •</textPath>
+          <defs><path id="circleText" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+          <text font-size="12" fill="#1e40af" font-weight="800">
+            <textPath href="#circleText" startOffset="8%">SCHLÜSSELDIENST • FAIR & TRANSPARENT • BERLIN • 24/7 •</textPath>
           </text>
         </svg>
         <span class="brand-name">L.LOCK Schlüsseldienst Berlin</span>
@@ -67,54 +46,56 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero (светлый фон + тёплый градиент) -->
   <section class="hero">
-    <!-- Абстрактный город (SVG-фон) -->
-    <svg class="city" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
-      <rect width="1200" height="300" fill="url(#grad)"/>
-      <defs>
-        <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="rgba(255,138,0,0.18)"/>
-          <stop offset="1" stop-color="rgba(13,17,23,0)"/>
-        </linearGradient>
-      </defs>
-      <g fill="#1a2332">
-        <rect x="40" y="130" width="80" height="130"/><rect x="130" y="100" width="90" height="160"/>
-        <rect x="230" y="150" width="70" height="110"/><rect x="310" y="120" width="120" height="140"/>
-        <rect x="460" y="90" width="90" height="170"/><rect x="560" y="140" width="70" height="120"/>
-        <rect x="640" y="115" width="110" height="145"/><rect x="770" y="150" width="85" height="110"/>
-        <rect x="865" y="95" width="100" height="165"/><rect x="980" y="130" width="85" height="130"/>
-        <rect x="1075" y="155" width="70" height="105"/>
-      </g>
-      <g fill="#223049" transform="translate(0,15)">
-        <rect x="70" y="160" width="60" height="100"/><rect x="160" y="140" width="70" height="120"/>
-        <rect x="250" y="180" width="50" height="80"/><rect x="330" y="145" width="100" height="115"/>
-        <rect x="470" y="130" width="70" height="130"/><rect x="555" y="175" width="50" height="85"/>
-        <rect x="650" y="150" width="80" height="110"/><rect x="760" y="175" width="70" height="85"/>
-        <rect x="870" y="135" width="80" height="125"/><rect x="990" y="165" width="60" height="95"/>
-        <rect x="1085" y="185" width="45" height="75"/>
-      </g>
-    </svg>
-
     <div class="container hero-inner">
       <h1>Tür zu? Wir öffnen <span class="accent">schnell & fair</span> – 24/7</h1>
-      <p class="lead">Festpreise ohne „ab“ und ohne versteckte Kosten. Nacht (20:00–08:00) +50%, Wochenende/Feiertage +75%, außerhalb Berlin +1,5 € / km.</p>
+      <p class="lead">
+        Feste Preise ohne „ab“ und ohne versteckte Kosten.
+        Nacht (20:00–08:00) +50%, Wochenende/Feiertage +75%, außerhalb Berlin +1,5 € / km.
+      </p>
       <div class="cta-row">
         <a class="btn" href="tel:+491755328410">Sofort anrufen</a>
         <a class="btn ghost" href="#preise">Preise ansehen</a>
       </div>
+
       <ul class="badges">
-        <li>24/7 Notdienst</li><li>Transparente Festpreise</li><li>Schonende Öffnung</li>
+        <li>24/7 Notdienst</li>
+        <li>Transparente Festpreise</li>
+        <li>Schonende Öffnung</li>
       </ul>
     </div>
+    <!-- Абстрактный «город» стал светлым -->
+    <svg class="city" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="bgrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#ffe4c2"/>
+          <stop offset="1" stop-color="#ffffff"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="220" fill="url(#bgrad)"/>
+      <g fill="#dbe8ff">
+        <rect x="40" y="90" width="80" height="130" rx="6"/>
+        <rect x="130" y="60" width="90" height="160" rx="6"/>
+        <rect x="230" y="110" width="70" height="110" rx="6"/>
+        <rect x="310" y="75" width="120" height="145" rx="6"/>
+        <rect x="460" y="50" width="90" height="170" rx="6"/>
+        <rect x="560" y="100" width="70" height="120" rx="6"/>
+        <rect x="640" y="70" width="110" height="150" rx="6"/>
+        <rect x="770" y="110" width="85" height="110" rx="6"/>
+        <rect x="865" y="55" width="100" height="165" rx="6"/>
+        <rect x="980" y="90" width="85" height="130" rx="6"/>
+        <rect x="1075" y="115" width="70" height="105" rx="6"/>
+      </g>
+    </svg>
   </section>
 
-  <!-- Transparenz -->
+  <!-- Прозрачность -->
   <section class="section">
     <div class="container grid-2">
       <div>
         <h2>100% Transparenz</h2>
-        <p>Wir arbeiten offen und ehrlich: <strong>fixe Preise</strong> ohne versteckte Gebühren. Zuschläge gelten nur nachts, an Wochenenden/Feiertagen und außerhalb Berlins.</p>
+        <p class="dim">Fixe Preise. Keine versteckten Gebühren. Zuschläge nur nachts, am Wochenende/Feiertagen und außerhalb Berlins.</p>
         <ul class="check">
           <li>Keine Anfahrt innerhalb Berlin</li>
           <li>Außerhalb Berlin: <strong>+1,5 € / km</strong></li>
@@ -122,7 +103,7 @@
           <li>Wochenende/Feiertage <strong>+75%</strong></li>
         </ul>
       </div>
-      <div class="card">
+      <div class="card glass">
         <h3>Hotline</h3>
         <a class="hotline" href="tel:+491755328410">+49 175 5328410</a>
         <p class="muted">Ganz Berlin & bis 30 km Umland.</p>
@@ -130,36 +111,35 @@
     </div>
   </section>
 
-  <!-- Preise -->
+  <!-- Цены -->
   <section class="section" id="preise">
     <div class="container">
       <h2>Festpreise</h2>
       <div class="cards">
-        <article class="card pcard">
+        <article class="card lift">
           <h3>Tür nur zugefallen</h3>
           <div class="price">90 €</div>
-          <p>Schonende Öffnung ohne Beschädigung.</p>
+          <p class="dim">Schonende Öffnung ohne Beschädigung.</p>
         </article>
-        <article class="card pcard">
+        <article class="card lift">
           <h3>Tür verschlossen</h3>
           <div class="price">150 €</div>
-          <p>Wenn abgeschlossen wurde oder das Schloss blockiert.</p>
+          <p class="dim">Wenn abgeschlossen wurde oder das Schloss blockiert.</p>
         </article>
-        <article class="card pcard">
+        <article class="card lift">
           <h3>Autoöffnung</h3>
           <div class="price">190 €</div>
-          <p>Fahrzeugöffnung für gängige Marken und Modelle.</p>
+          <p class="dim">Fahrzeugöffnung für gängige Marken und Modelle.</p>
         </article>
       </div>
-      <p class="note">* Nachtzuschlag 20:00–08:00 +50%. Wochenende/Feiertage +75%. Außerhalb Berlin +1,5 € pro km.</p>
+      <p class="note dim">* Nacht 20:00–08:00 +50%. Wochenende/Feiertage +75%. Außerhalb Berlin +1,5 € / km.</p>
     </div>
   </section>
 
-  <!-- Gebiet -->
+  <!-- Районы -->
   <section class="section" id="gebiet">
     <div class="container">
       <h2>Einsatzgebiet: Berlin +30 km</h2>
-      <p>Berlin (alle Bezirke) sowie Umland bis 30 km. Außerhalb Berlin: <strong>+1,5 € / km</strong>.</p>
       <div class="grid-2">
         <div>
           <h3>Berlin (Bezirke)</h3>
@@ -177,27 +157,25 @@
     </div>
   </section>
 
-  <!-- Bewertungen (заглушка) -->
+  <!-- Отзывы (заглушка) -->
   <section class="section" id="bewertungen">
     <div class="container">
       <h2>Bewertungen</h2>
-      <div class="placeholder">
+      <div class="placeholder light">
         <p><em>Hier erscheinen später Kundenbewertungen.</em></p>
       </div>
     </div>
   </section>
 
-  <!-- Kontakt -->
+  <!-- Контакт -->
   <section class="section" id="kontakt">
     <div class="container grid-2">
       <div>
         <h2>Kontakt</h2>
-        <p>Rufen Sie direkt an oder senden Sie uns eine Nachricht.</p>
-        <a class="btn" href="tel:+491755328410">Anrufen: +49 175 5328410</a>
-        <p class="muted">E-Mail und Social Media fügen wir später hinzu.</p>
+        <p class="dim">Rufen Sie direkt an oder senden Sie uns eine Nachricht.</p>
+        <a class="btn big" href="tel:+491755328410">Anrufen: +49 175 5328410</a>
       </div>
-      <!-- Форма-демо (без бэкенда). Готова к замене на Formspree/TG. -->
-      <form class="card form" id="contact-form">
+      <form class="card form lift" id="contact-form">
         <label>Ihr Name
           <input name="name" type="text" placeholder="Max Mustermann" required>
         </label>
@@ -225,7 +203,6 @@
       </div>
       <nav class="footnav">
         <a href="#preise">Preise</a>
-        <a href="#leistungen" onclick="event.preventDefault();document.querySelector('#preise').scrollIntoView({behavior:'smooth'})">Leistungen</a>
         <a href="#gebiet">Einsatzgebiet</a>
         <a href="#bewertungen">Bewertungen</a>
         <a href="#kontakt">Kontakt</a>
