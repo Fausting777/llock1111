@@ -78,7 +78,7 @@
       position: absolute; top: 100%; right: 0; background: var(--card);
       border-radius: 12px; box-shadow: var(--shadow); padding: 0.8rem;
       min-width: 220px; display: none; margin-top: 0.5rem;
-      border: 1px solid #334155;
+      border: 1px solid #334155; z-index: 1001;
     }
     .nav__menu.show { display: block; }
     .nav__link {
@@ -274,7 +274,7 @@
         </div>
         
         <nav class="nav">
-          <button class="nav__toggle">
+          <button class="nav__toggle" id="navToggle">
             Меню ☰
           </button>
           <div class="nav__menu" id="navMenu">
@@ -558,5 +558,50 @@
 </footer>
 
 <script>
-  // Переключение меню
-  document.querySelector('.nav__toggle').addEventListener('cl
+  // Ждем полной загрузки DOM
+  document.addEventListener('DOMContentLoaded', function() {
+    // Год в футере
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Переключение меню
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navMenu.classList.toggle('show');
+      });
+    }
+    
+    // Переключение языка
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+    
+    // Закрытие меню при клике вне его
+    document.addEventListener('click', function(event) {
+      const nav = document.querySelector('.nav');
+      const menu = document.getElementById('navMenu');
+      if (menu && nav && !nav.contains(event.target)) {
+        menu.classList.remove('show');
+      }
+    });
+    
+    // Закрытие меню при клике на ссылку
+    document.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', function() {
+        const menu = document.getElementById('navMenu');
+        if (menu) {
+          menu.classList.remove('show');
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
