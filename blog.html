@@ -1,156 +1,412 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Блог — L.LOCK Слесарь в Берлине • Советы и полезная информация</title>
-<style>
-:root{
---bg:#0f172a;--card:#1e293b;--text:#f1f5f9;--dim:#94a3b8;--accent:#ea580c;
---blue:#3b82f6;--green:#22c55e;--shadow:0 8px 30px rgba(0,0,0,0.3);
-}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-background:var(--bg);color:var(--text);margin:0;line-height:1.6;}
-.container{width:min(1100px,92%);margin:0 auto;}
-h1{text-align:center;margin:2rem 0;font-size:2.4rem;}
-.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2rem;margin:3rem 0;}
-.blog-card{background:var(--card);padding:2rem;border-radius:20px;box-shadow:var(--shadow);
-border:1px solid #334155;transition:.3s;}
-.blog-card:hover{transform:translateY(-5px);}
-.blog-card__icon{font-size:3rem;margin-bottom:1rem;}
-.blog-card__title{font-size:1.4rem;font-weight:700;margin-bottom:1rem;}
-.blog-card__excerpt{color:var(--dim);margin-bottom:1rem;}
-.blog-card__read-more{color:var(--accent);font-weight:600;cursor:pointer;text-decoration:none;}
-.blog-card__read-more:hover{color:#d5541a;}
-.blog-card__expand{display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid #334155;}
-.blog-card__expand.show{display:block;}
-.inline-article{background:var(--card);border:1px solid #334155;border-radius:16px;padding:1rem;
-animation:fadeIn .25s ease-out;}
-.inline-article p{color:var(--dim);}
-.close-inline{margin-top:1rem;width:100%;border:none;border-radius:10px;padding:.8rem 1rem;
-font-weight:700;cursor:pointer;background:#334155;color:var(--text);}
-.close-inline:hover{background:#475569;}
-@keyframes fadeIn{from{opacity:.4;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Блог — L.LOCK Слесарь в Берлине • Советы и полезная информация</title>
+  <meta name="description" content="Полезные статьи от слесаря в Берлине: как предотвратить захлопывание дверей, что делать если потерял ключи, советы по безопасности." />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    /* === DARK MINIMAL STYLE === */
+    :root {
+      --bg:#0f172a; --card:#1e293b; --text:#f1f5f9; --dim:#94a3b8;
+      --accent:#ea580c; --blue:#3b82f6; --green:#22c55e;
+      --header-bg:#020617; --header-text:#f1f5f9;
+      --section-bg:#1e293b; --shadow:0 8px 30px rgba(0,0,0,0.3);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      background:var(--bg); color:var(--text); line-height:1.6;
+      max-width:100vw; overflow-x:hidden;
+    }
+    .container{width:min(1100px,92%);margin:0 auto}
+
+    /* Header */
+    .header{
+      background:var(--header-bg); color:var(--header-text);
+      position:fixed; top:0; left:0; right:0; z-index:1000;
+      border-bottom:1px solid #334155;
+    }
+    .header__top{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:1.2rem 0;
+    }
+    .slogan{
+      display:flex; align-items:center; gap:1.5rem;
+      font-size:1rem; color:#cbd5e1;
+    }
+    .logo{display:flex; align-items:center; gap:1rem; text-decoration:none;}
+    .logo__img{
+      width:70px;height:70px;border-radius:12px;border:2px solid var(--accent);
+      box-shadow:0 4px 20px rgba(234,88,12,.3); transition:transform .3s ease;
+    }
+    .logo__img:hover{transform:scale(1.05)}
+    .logo__text{font-weight:800;font-size:1.4rem;color:white;letter-spacing:.5px}
+
+    /* Language Switcher */
+    .language-switcher{display:flex;background:#334155;border-radius:10px;padding:3px}
+    .lang-btn{padding:.5rem 1rem;border:none;background:transparent;color:#cbd5e1;border-radius:8px;cursor:pointer;font-size:.9rem;font-weight:600;transition:.3s}
+    .lang-btn.active{background:var(--accent);color:white}
+
+    /* Navigation */
+    .nav{position:relative}
+    .nav__toggle{
+      background:var(--accent);color:white;border:none;padding:.8rem 1.5rem;border-radius:10px;cursor:pointer;
+      display:flex;align-items:center;gap:.5rem;font-weight:600;transition:.3s;font-size:16px;
+    }
+    .nav__toggle:hover{background:#d5541a}
+    .nav__menu{
+      position:absolute; top:100%; right:0; background:var(--card);
+      border-radius:12px; box-shadow:var(--shadow); padding:.8rem;
+      min-width:220px; display:none; margin-top:.5rem;
+      border:1px solid #334155; z-index:1001;
+    }
+    .nav__menu.show{display:block}
+    .nav__link{
+      display:block; padding:.8rem 1rem; color:var(--text);
+      text-decoration:none; border-radius:8px; transition:.3s; font-weight:500; font-size:16px;
+    }
+    .nav__link:hover{background:#334155}
+    .nav__link--active{background:var(--accent);color:white}
+    .nav__link--phone{background:var(--blue);color:white;font-weight:700;margin-top:.5rem;text-align:center;font-size:1.1rem}
+
+    /* Hero */
+    .hero{
+      background:linear-gradient(135deg,var(--bg) 0%,#1e293b 50%,#0f172a 100%);
+      padding:160px 0 80px; margin-top:100px; position:relative; overflow:hidden; text-align:center;
+    }
+    .hero::before{
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(circle at 70% 20%, rgba(59,130,246,.1) 0%, transparent 50%);
+      pointer-events:none;
+    }
+
+    /* Blog Grid */
+    .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2.5rem;margin:3rem 0}
+    .blog-card{
+      background:var(--card); padding:2.5rem; border-radius:20px; box-shadow:var(--shadow);
+      border:1px solid #334155; transition:.3s ease; position:relative; overflow:hidden;
+    }
+    .blog-card::before{content:''; position:absolute; top:0; left:0; right:0; height:4px; background:var(--accent)}
+    .blog-card:hover{transform:translateY(-5px); box-shadow:0 20px 40px rgba(0,0,0,.4)}
+    .blog-card__icon{font-size:3rem; margin-bottom:1.5rem; display:block}
+    .blog-card__meta{display:flex; align-items:center; gap:1rem; margin-bottom:1rem; color:var(--dim); font-size:.9rem}
+    .blog-card__tag{background:#0f172a; padding:.3rem .8rem; border-radius:6px; border:1px solid #334155; font-size:.8rem}
+    .blog-card__title{font-size:1.5rem; margin-bottom:1rem; line-height:1.3}
+    .blog-card__excerpt{color:var(--dim); margin-bottom:1.5rem; line-height:1.6}
+    .blog-card__read-more{color:var(--accent); font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:.5rem; transition:.3s; cursor:pointer}
+    .blog-card__read-more:hover{color:#d5541a; transform:translateX(5px)}
+
+    /* Tips / FAQ / Buttons / Footer (как было) */
+    .tips-section{background:var(--section-bg); padding:5rem 0}
+    .tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:3rem}
+    .tip-card{background:var(--card); padding:2rem; border-radius:16px; border:1px solid #334155; text-align:center}
+    .tip-card__icon{font-size:2.5rem;margin-bottom:1rem;display:block}
+
+    .faq-section{padding:5rem 0}
+    .faq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(500px,1fr));gap:1.5rem;margin-top:3rem}
+    .faq-item{background:var(--card); padding:2rem; border-radius:16px; border:1px solid #334155}
+    .faq-question{font-size:1.2rem; font-weight:600; margin-bottom:1rem; color:var(--accent)}
+
+    .emergency-banner{
+      background:linear-gradient(135deg,var(--accent) 0%, #d5541a 100%);
+      padding:3rem; border-radius:20px; text-align:center; margin:4rem 0; box-shadow:var(--shadow)
+    }
+    .btn{display:inline-block;padding:1.2rem 2rem;border-radius:12px;font-weight:700;text-decoration:none;text-align:center;transition:.3s;border:none;cursor:pointer;width:100%;margin:.5rem 0;font-size:1.1rem}
+    .btn--large{padding:1.5rem 3rem;font-size:1.3rem;width:auto;display:inline-block}
+
+    .footer{background:var(--header-bg);color:var(--header-text);padding:4rem 0 2rem;border-top:1px solid #334155}
+    .footer__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:3rem}
+
+    .text-center{text-align:center} .text-dim{color:var(--dim)} .section{padding:5rem 0}
+    .section__title{font-size:2.5rem;margin-bottom:1rem;text-align:center;color:var(--text);font-weight:700}
+    .section__subtitle{font-size:1.2rem;color:var(--dim);text-align:center;margin-bottom:3rem;max-width:600px;margin-left:auto;margin-right:auto}
+
+    /* Floating buttons */
+    .floating-buttons{position:fixed;bottom:2rem;right:2rem;display:flex;flex-direction:column;gap:1rem;z-index:1000}
+    .floating-btn{width:70px;height:70px;border-radius:50%;border:none;background:var(--accent);color:white;font-size:1.5rem;box-shadow:var(--shadow);cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center}
+    .floating-btn:hover{transform:translateY(-5px) scale(1.1); box-shadow:0 15px 30px rgba(234,88,12,.4)}
+    .floating-btn.phone{background:var(--blue)} .floating-btn.whatsapp{background:var(--green)}
+
+    /* === Inline expand (встроенные статьи) === */
+    .blog-card__expand{display:none;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid #334155}
+    .blog-card__expand.show{display:block}
+    .inline-article{background:var(--card);border:1px solid #334155;border-radius:16px;padding:1.25rem;box-shadow:var(--shadow);animation:fadeIn .22s ease-out}
+    .inline-article p{color:var(--dim);line-height:1.7}
+    .inline-article ul, .inline-article ol{padding-left:1.25rem;color:var(--dim)}
+    .close-inline{margin-top:1rem;width:100%;border:none;border-radius:10px;padding:.8rem 1rem;font-weight:700;cursor:pointer;background:#334155;color:var(--text);transition:.3s}
+    .close-inline:hover{background:#475569}
+    @keyframes fadeIn{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+    /* Responsive */
+    @media (max-width:768px){
+      .header__top{flex-direction:column;gap:1.5rem;text-align:center}
+      .slogan{justify-content:center;flex-direction:column;gap:1rem}
+      .logo__img{width:60px;height:60px}
+      .hero{padding:140px 0 60px;margin-top:140px}
+      .blog-grid{grid-template-columns:1fr}
+      .faq-grid{grid-template-columns:1fr}
+      .tips-grid{grid-template-columns:1fr}
+      .floating-btn{width:60px;height:60px;font-size:1.3rem}
+      .btn--large{width:100%}
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
-  <h1>📝 Полезный блог L.LOCK</h1>
+<!-- Header -->
+<header class="header">
+  <div class="container">
+    <div class="header__top">
+      <div class="slogan">
+        <a href="./" class="logo">
+          <img src="assets/logo-llock.png" alt="L.LOCK" class="logo__img">
+          <span class="logo__text">L.LOCK</span>
+        </a>
+        <span>Слесарь в Берлине 24/7 • Честные фиксированные цены</span>
+      </div>
 
-  <div class="blog-grid">
-    <!-- 1 -->
-    <div class="blog-card">
-      <div class="blog-card__icon">🚪</div>
-      <div class="blog-card__title">3 вещи, которые НЕЛЬЗЯ делать если захлопнулась дверь</div>
-      <div class="blog-card__excerpt">Почему кредитная карта и отвёртка могут навредить больше чем помочь...</div>
-      <a class="blog-card__read-more">Читать далее →</a>
-      <div class="blog-card__expand" data-article="door"></div>
-    </div>
+      <div style="display:flex; align-items:center; gap:1.5rem;">
+        <div class="language-switcher">
+          <button class="lang-btn active" data-lang="ru">RU</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
 
-    <!-- 2 -->
-    <div class="blog-card">
-      <div class="blog-card__icon">💰</div>
-      <div class="blog-card__title">Почему цены на вскрытие дверей разные в Берлине?</div>
-      <div class="blog-card__excerpt">Разбираем реальную стоимость услуг слесаря. Из чего складывается цена...</div>
-      <a class="blog-card__read-more">Читать далее →</a>
-      <div class="blog-card__expand" data-article="price"></div>
-    </div>
-
-    <!-- 3 -->
-    <div class="blog-card">
-      <div class="blog-card__icon">🚗</div>
-      <div class="blog-card__title">Открытие авто без повреждений: современные методы</div>
-      <div class="blog-card__excerpt">Как открывают современные автомобили с электронными ключами...</div>
-      <a class="blog-card__read-more">Читать далее →</a>
-      <div class="blog-card__expand" data-article="auto"></div>
-    </div>
-
-    <!-- 4 -->
-    <div class="blog-card">
-      <div class="blog-card__icon">🔐</div>
-      <div class="blog-card__title">Как выбрать надёжный замок для квартиры</div>
-      <div class="blog-card__excerpt">Рейтинг производителей замков и советы по выбору систем безопасности...</div>
-      <a class="blog-card__read-more">Читать далее →</a>
-      <div class="blog-card__expand" data-article="lock"></div>
-    </div>
-
-    <!-- 5 -->
-    <div class="blog-card">
-      <div class="blog-card__icon">🛠️</div>
-      <div class="blog-card__title">Когда нужна замена замка, а когда достаточно ремонта?</div>
-      <div class="blog-card__excerpt">Практическое руководство по диагностике и степени износа замков...</div>
-      <a class="blog-card__read-more">Читать далее →</a>
-      <div class="blog-card__expand" data-article="repair"></div>
-    </div>
-
-    <!-- 6 -->
-    <div class="blog-card">
-      <div class="blog-card__icon">🏠</div>
-      <div class="blog-card__title">5 способов предотвратить захлопывание дверей</div>
-      <div class="blog-card__excerpt">Простые и эффективные методы, чтобы избежать экстренного вызова мастера...</div>
-      <a class="blog-card__read-more">Читать далее →</a>
-      <div class="blog-card__expand" data-article="prevent"></div>
+        <nav class="nav">
+          <button class="nav__toggle" id="navToggle" onclick="toggleMenu()">Меню ☰</button>
+          <div class="nav__menu" id="navMenu">
+            <a href="./" class="nav__link">🏠 Главная</a>
+            <a href="uslugi.html" class="nav__link">🔧 Услуги</a>
+            <a href="ceny.html" class="nav__link">💶 Цены</a>
+            <a href="otzyvy.html" class="nav__link">⭐ Отзывы</a>
+            <a href="blog.html" class="nav__link nav__link--active">📝 Блог</a>
+            <a href="kontakt.html" class="nav__link">📞 Контакты</a>
+            <a href="tel:+491755328410" class="nav__link nav__link--phone">📞 +49 175 5328410</a>
+          </div>
+        </nav>
+      </div>
     </div>
   </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <h1 style="font-size:3.5rem;margin-bottom:1.5rem;font-weight:800;">📝 Полезный блог</h1>
+    <p class="text-dim" style="font-size:1.4rem;max-width:600px;margin:0 auto;">
+      Советы от профессионального слесаря. Как избежать проблем с замками и что делать в экстренных ситуациях.
+    </p>
+  </div>
+</section>
+
+<!-- Blog -->
+<section class="section">
+  <div class="container">
+    <h2 class="section__title">Последние статьи</h2>
+    <p class="section__subtitle">Актуальные советы и рекомендации от опытного слесаря</p>
+
+    <div class="blog-grid">
+      <!-- 1 -->
+      <div class="blog-card">
+        <div class="blog-card__icon">🚪</div>
+        <div class="blog-card__meta"><div class="blog-card__tag">Профилактика</div></div>
+        <h3 class="blog-card__title">3 вещи, которые НЕЛЬЗЯ делать если захлопнулась дверь</h3>
+        <p class="blog-card__excerpt">Почему кредитная карта и отвертка могут навредить больше чем помочь. Правильные действия в экстренной ситуации.</p>
+        <a class="blog-card__read-more" data-article="door">Читать далее →</a>
+        <div class="blog-card__expand"></div>
+      </div>
+
+      <!-- 2 -->
+      <div class="blog-card">
+        <div class="blog-card__icon">💰</div>
+        <div class="blog-card__meta"><div class="blog-card__tag">Цены</div></div>
+        <h3 class="blog-card__title">Почему цены на вскрытие дверей такие разные в Берлине?</h3>
+        <p class="blog-card__excerpt">Разбираем реальную стоимость услуг слесаря. Из чего складывается цена и как не переплатить в экстренной ситуации.</p>
+        <a class="blog-card__read-more" data-article="price">Читать далее →</a>
+        <div class="blog-card__expand"></div>
+      </div>
+
+      <!-- 3 -->
+      <div class="blog-card">
+        <div class="blog-card__icon">🚗</div>
+        <div class="blog-card__meta"><div class="blog-card__tag">Авто</div></div>
+        <h3 class="blog-card__title">Открытие авто без повреждений: современные методы</h3>
+        <p class="blog-card__excerpt">Как открывают современные автомобили с электронными ключами. Оборудование, технологии и почему некоторые машины сложнее других.</p>
+        <a class="blog-card__read-more" data-article="auto">Читать далее →</a>
+        <div class="blog-card__expand"></div>
+      </div>
+
+      <!-- 4 -->
+      <div class="blog-card">
+        <div class="blog-card__icon">🔐</div>
+        <div class="blog-card__meta"><div class="blog-card__tag">Безопасность</div></div>
+        <h3 class="blog-card__title">Как выбрать надежный замок для квартиры в Берлине</h3>
+        <p class="blog-card__excerpt">Рейтинг лучших производителей замков. На что обращать внимание при выборе и какие системы безопасности действительно работают.</p>
+        <a class="blog-card__read-more" data-article="lock">Читать далее →</a>
+        <div class="blog-card__expand"></div>
+      </div>
+
+      <!-- 5 -->
+      <div class="blog-card">
+        <div class="blog-card__icon">🛠️</div>
+        <div class="blog-card__meta"><div class="blog-card__tag">Ремонт</div></div>
+        <h3 class="blog-card__title">Когда нужна замена замка, а когда достаточно ремонта?</h3>
+        <p class="blog-card__excerpt">Практическое руководство по диагностике проблем с замками. Как определить степень износа и когда экономить не стоит.</p>
+        <a class="blog-card__read-more" data-article="repair">Читать далее →</a>
+        <div class="blog-card__expand"></div>
+      </div>
+
+      <!-- 6 -->
+      <div class="blog-card">
+        <div class="blog-card__icon">🏠</div>
+        <div class="blog-card__meta"><div class="blog-card__tag">Советы</div></div>
+        <h3 class="blog-card__title">5 способов предотвратить захлопывание дверей</h3>
+        <p class="blog-card__excerpt">Простые и эффективные методы, которые помогут избежать экстренных вызовов слесаря. Проверенные временем решения.</p>
+        <a class="blog-card__read-more" data-article="prevent">Читать далее →</a>
+        <div class="blog-card__expand"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Tips -->
+<section class="tips-section">
+  <div class="container">
+    <h2 class="section__title">⚡ Быстрые советы</h2>
+    <p class="section__subtitle">Полезные рекомендации на каждый день</p>
+
+    <div class="tips-grid">
+      <div class="tip-card"><div class="tip-card__icon">🔑</div><h3 style="margin-bottom:1rem;">Дубликаты ключей</h3><p class="text-dim">Держите запасные ключи у доверенных соседей/родственников — сэкономит время и деньги.</p></div>
+      <div class="tip-card"><div class="tip-card__icon">🚨</div><h3 style="margin-bottom:1rem;">Экстренный номер</h3><p class="text-dim">Сохраните наш номер — в стрессовой ситуации искать в интернете тяжело.</p></div>
+      <div class="tip-card"><div class="tip-card__icon">📱</div><h3 style="margin-bottom:1rem;">Фото документов</h3><p class="text-dim">Храните фото документов в защищённом облаке — пригодится для подтверждения адреса.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <h2 class="section__title">❓ Частые вопросы</h2>
+    <p class="section__subtitle">Ответы на самые популярные вопросы от наших клиентов</p>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-question">Сколько времени занимает вскрытие двери?</div>
+        <p class="text-dim">В большинстве случаев 5–15 минут. Сложные замки или броненакладки — до 30 минут. Работаем аккуратно, чтобы не повредить дверь.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Что делать если потерял ключи ночью?</div>
+        <p class="text-dim">Звоните в любое время! Работаем 24/7. По Берлину выезд обычно 15–30 минут. Ночной тариф +50%.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Можете ли вы открыть современный автомобиль?</div>
+        <p class="text-dim">Да, используем специальное оборудование для авто с электронными ключами и кнопками START.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Нужно ли подтверждать право собственности?</div>
+        <p class="text-dim">Да. Достаточно документа с адресом или свидетелей-соседей. Это стандартная процедура безопасности.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Emergency -->
+<section class="section">
+  <div class="container">
+    <div class="emergency-banner">
+      <h2 style="font-size:2.5rem;margin-bottom:1rem;color:white;">🚨 Нужна срочная помощь?</h2>
+      <p style="font-size:1.3rem;margin-bottom:2rem;color:white;opacity:.9;">Работаем 24/7 • Выезд за 15–30 минут • Фиксированные цены</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="tel:+491755328410" class="btn btn--large" style="background:white;color:var(--accent);">📞 Срочный вызов</a>
+        <a href="https://wa.me/491755328410" class="btn btn--large" style="background:var(--green);color:white;">💬 Написать в WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Floating Buttons -->
+<div class="floating-buttons">
+  <button class="floating-btn phone" onclick="window.location.href='tel:+491755328410'">📞</button>
+  <button class="floating-btn whatsapp" onclick="window.open('https://wa.me/491755328410')">💬</button>
 </div>
 
-<!-- Встроенные статьи -->
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <strong style="font-size:1.3rem;color:var(--accent);">L.LOCK Schlüsseldienst</strong>
+        <p class="text-dim" style="line-height:1.6;margin-top:.75rem;">🕒 Работаем 24/7<br>💰 Честные фиксированные цены<br>🚗 По всему Берлину и области</p>
+      </div>
+      <div>
+        <strong style="font-size:1.1rem;">📞 Контакты</strong>
+        <p class="text-dim" style="line-height:1.6;margin-top:.75rem;">
+          <a href="tel:+491755328410" style="color:#cbd5e1;text-decoration:none;font-weight:600;">+49 175 5328410</a><br>
+          📧 info@llock.de<br>🕒 Круглосуточно
+        </p>
+      </div>
+      <div>
+        <strong style="font-size:1.1rem;">📝 Блог</strong>
+        <p class="text-dim" style="line-height:1.6;margin-top:.75rem;">🚪 Советы по замкам<br>🚗 Авто вскрытие<br>🔐 Безопасность<br>💰 Экономия денег</p>
+      </div>
+    </div>
+    <div style="border-top:1px solid #334155;margin-top:3rem;padding-top:2rem;text-align:center;">
+      <p class="text-dim">© <span id="year"></span> L.LOCK Schlüsseldienst Berlin. Все права защищены.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ШАБЛОНЫ СТАТЕЙ (встроенные) -->
 <template id="article-door">
   <div class="inline-article">
     <h2>3 вещи, которые НЕЛЬЗЯ делать если захлопнулась дверь</h2>
-    <p>Не пытайтесь открыть дверь картой, ножом или отвёрткой — можно сломать замок или дверное полотно.</p>
-    <p><b>1.</b> Не используйте подручные предметы.<br>Они только усугубят ситуацию.</p>
-    <p><b>2.</b> Не разбивайте стекло.<br>Ремонт выйдет дороже вызова специалиста.</p>
-    <p><b>3.</b> Не вызывайте случайных «мастеров».<br>Проверяйте сайт и фиксированные цены.</p>
-    <p><b>☎️ Телефон:</b> <a href="tel:+491755328410" style="color:var(--accent)">+49 175 5328410</a></p>
+    <p>Не пытайтесь открыть дверь картой/отвёрткой: велик риск повредить защёлку и кромку полотна.</p>
+    <p><b>1.</b> Не используйте подручные предметы — они только заклинивают механизм.</p>
+    <p><b>2.</b> Не разбивайте стекло — ремонт дороже вызова мастера и опасно для здоровья.</p>
+    <p><b>3.</b> Не зовите «случайных» мастеров — проверяйте сайт, цены и чек.</p>
+    <p><b>☎️ Позвонить:</b> <a href="tel:+491755328410" style="color:var(--accent)">+49 175 5328410</a></p>
     <button class="close-inline">Свернуть</button>
   </div>
 </template>
 
 <template id="article-price">
   <div class="inline-article">
-    <h2>Почему цены на вскрытие дверей разные в Берлине</h2>
-    <p>Стоимость зависит от времени вызова, сложности замка и расстояния. Мы работаем по фиксированным тарифам:</p>
+    <h2>Почему цены на вскрытие дверей разные в Берлине?</h2>
+    <p>Цена зависит от времени вызова, сложности замка и расстояния. У нас — прозрачные фиксированные тарифы:</p>
     <ul>
       <li>🚪 Захлопнутая дверь — 90 €</li>
       <li>🔒 Закрыта на замок — 150 €</li>
       <li>🚗 Автомобиль — 190 €</li>
     </ul>
-    <p>Ночной тариф (20:00–8:00) +50%, выходные и праздники +75%.</p>
+    <p>Ночью (20:00–8:00) +50%, выходные и праздники +75%.</p>
     <button class="close-inline">Свернуть</button>
   </div>
 </template>
 
 <template id="article-auto">
   <div class="inline-article">
-    <h2>Открытие авто без повреждений</h2>
-    <p>Современные машины требуют аккуратного подхода. Мы используем специальные клинья и пневмоподушки, чтобы открыть дверь без царапин и следов.</p>
-    <p>Работаем с любыми марками: от VW и Audi до Mercedes и BMW.</p>
-    <p>Вызов возможен 24/7 по Берлину и окрестностям.</p>
+    <h2>Открытие авто без повреждений: современные методы</h2>
+    <p>Используем клинья, пневмоподушки и безопасные зонд-инструменты. Электронные ключи — без разборки и без следов.</p>
+    <p>Работаем с марками VW, Audi, BMW, Mercedes и др. 24/7 по Берлину.</p>
     <button class="close-inline">Свернуть</button>
   </div>
 </template>
 
 <template id="article-lock">
   <div class="inline-article">
-    <h2>Как выбрать надёжный замок для квартиры</h2>
-    <p>Хороший замок — это не обязательно дорогой. Главное — надёжность бренда и наличие защитных сертификатов.</p>
-    <ul>
-      <li>ABUS – немецкое качество и долговечность</li>
-      <li>KESO – высокая защита от вскрытия</li>
-      <li>IKON – оптимальное соотношение цена/качество</li>
-    </ul>
-    <p>Не экономьте на цилиндре — это сердце замка.</p>
+    <h2>Как выбрать надежный замок для квартиры в Берлине</h2>
+    <p>Смотрите на цилиндр, защиту от высверливания и сертификацию. По брендам: ABUS, KESO, IKON — хорошие варианты.</p>
+    <p>Не экономьте на цилиндре — это «сердце» системы.</p>
     <button class="close-inline">Свернуть</button>
   </div>
 </template>
 
 <template id="article-repair">
   <div class="inline-article">
-    <h2>Когда нужна замена замка, а когда ремонт?</h2>
-    <p>Если ключ проворачивается с усилием, это может быть износ механизма — ремонт поможет. Но если ключ застревает или ломается, нужна замена.</p>
-    <p>Замена также обязательна после утери ключей или переезда.</p>
+    <h2>Когда нужна замена замка, а когда достаточно ремонта?</h2>
+    <p>Лёгкое подклинивание — часто решается чисткой/смазкой. Застревание ключа или люфт — лучше замена.</p>
+    <p>После утери ключей рекомендуем замену цилиндра в обязательном порядке.</p>
     <button class="close-inline">Свернуть</button>
   </div>
 </template>
@@ -159,34 +415,86 @@ font-weight:700;cursor:pointer;background:#334155;color:var(--text);}
   <div class="inline-article">
     <h2>5 способов предотвратить захлопывание дверей</h2>
     <ul>
-      <li>Поставьте ограничитель или защёлку с фиксацией</li>
-      <li>Используйте магнитный стоппер</li>
-      <li>Регулярно смазывайте защёлку</li>
-      <li>Проверяйте ключи перед выходом</li>
-      <li>Оставляйте запасной комплект у соседа</li>
+      <li>Ограничитель или защёлка с фиксацией</li>
+      <li>Магнитный стоппер</li>
+      <li>Регулярная смазка защёлки</li>
+      <li>Проверка ключей перед выходом</li>
+      <li>Запасной комплект у соседа</li>
     </ul>
-    <p>Эти простые привычки сэкономят время и деньги.</p>
     <button class="close-inline">Свернуть</button>
   </div>
 </template>
 
 <script>
-document.addEventListener('click',e=>{
+/* Меню */
+function toggleMenu(){
+  var menu=document.getElementById('navMenu');
+  if(menu){menu.classList.toggle('show');}
+}
+function closeMenu(){
+  var menu=document.getElementById('navMenu');
+  if(menu){menu.classList.remove('show');}
+}
+
+/* Год + переключение языка + закрытие меню вне области */
+document.addEventListener('DOMContentLoaded',function(){
+  var yearElement=document.getElementById('year');
+  if(yearElement){yearElement.textContent=new Date().getFullYear();}
+
+  var langButtons=document.querySelectorAll('.lang-btn');
+  langButtons.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      langButtons.forEach(function(b){b.classList.remove('active');});
+      this.classList.add('active');
+      console.log('Язык изменен на: '+this.dataset.lang);
+    });
+  });
+
+  document.addEventListener('click',function(event){
+    var menu=document.getElementById('navMenu');
+    var button=document.getElementById('navToggle');
+    if(menu && button){
+      if(!menu.contains(event.target) && !button.contains(event.target)){
+        menu.classList.remove('show');
+      }
+    }
+  });
+});
+
+/* Инлайн-раскрытие статей (из шаблонов) */
+document.addEventListener('click',function(e){
   const link=e.target.closest('.blog-card__read-more');
-  if(!link)return;
+  if(!link) return;
   e.preventDefault();
+
   const card=link.closest('.blog-card');
   const expand=card.querySelector('.blog-card__expand');
-  if(expand.classList.contains('show')){expand.innerHTML='';expand.classList.remove('show');return;}
-  document.querySelectorAll('.blog-card__expand.show').forEach(el=>{el.innerHTML='';el.classList.remove('show');});
-  const id=expand.dataset.article;
-  const tpl=document.getElementById('article-'+id);
-  if(tpl){
-    expand.innerHTML=tpl.innerHTML;
-    expand.classList.add('show');
-    expand.querySelector('.close-inline').onclick=()=>{expand.innerHTML='';expand.classList.remove('show');};
-    expand.scrollIntoView({behavior:'smooth',block:'start'});
+
+  // сворачиваем, если открыто
+  if(expand.classList.contains('show')){
+    expand.classList.remove('show'); expand.innerHTML=''; return;
   }
+  // закрываем другие
+  document.querySelectorAll('.blog-card__expand.show').forEach(function(el){
+    el.classList.remove('show'); el.innerHTML='';
+  });
+
+  const id=link.getAttribute('data-article');
+  const tpl=document.getElementById('article-'+id);
+  if(!tpl){ return; }
+
+  expand.innerHTML=tpl.innerHTML;
+  expand.classList.add('show');
+
+  const closeBtn=expand.querySelector('.close-inline');
+  if(closeBtn){
+    closeBtn.addEventListener('click',function(){
+      expand.classList.remove('show'); expand.innerHTML='';
+      link.scrollIntoView({behavior:'smooth',block:'center'});
+    },{once:true});
+  }
+
+  expand.scrollIntoView({behavior:'smooth',block:'start'});
 });
 </script>
 
