@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Отзывы — L.LOCK Слесарь в Берлине 24/7 • Реальные мнения клиентов</title>
+  <meta name="description" content="Реальные отзывы клиентов L.LOCK: вскрытие дверей и авто в Берлине. Честные цены, быстрый выезд, качественная работа." />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    /* === DARK MINIMAL STYLE === */
+    :root {
+      --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --dim: #94a3b8;
+      --accent: #ea580c; --blue: #3b82f6; --green: #22c55e;
+      --header-bg: #020617; --header-text: #f1f5f9;
+      --section-bg: #1e293b;
+      --shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6;
+      max-width: 100vw; overflow-x: hidden;
+    }
+    .container { width: min(1100px, 92%); margin: 0 auto }
+    
+    /* Header */
+    .header { 
+      background: var(--header-bg); color: var(--header-text);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      border-bottom: 1px solid #334155;
+    }
+    .header__top {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 0;
+    }
+    .slogan { 
+      display: flex; align-items: center; gap: 1.5rem;
+      font-size: 1rem; color: #cbd5e1;
+    }
+    .logo { 
+      display: flex; align-items: center; gap: 1rem;
+      text-decoration: none;
+    }
+    .logo__img { 
+      width: 70px; height: 70px; border-radius: 12px; 
+      border: 2px solid var(--accent); box-shadow: 0 4px 20px rgba(234, 88, 12, 0.3);
+      transition: transform 0.3s ease;
+    }
+    .logo__img:hover { transform: scale(1.05); }
+    .logo__text { 
+      font-weight: 800; font-size: 1.4rem; color: white;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Language Switcher */
+    .language-switcher {
+      display: flex; background: #334155; border-radius: 10px; padding: 3px;
+    }
+    .lang-btn {
+      padding: 0.5rem 1rem; border: none; background: transparent;
+      color: #cbd5e1; border-radius: 8px; cursor: pointer;
+      font-size: 0.9rem; font-weight: 600; transition: all 0.3s ease;
+    }
+    .lang-btn.active {
+      background: var(--accent); color: white;
+    }
+    
+    /* Navigation */
+    .nav { position: relative; }
+    .nav__toggle {
+      background: var(--accent); color: white; border: none;
+      padding: 0.8rem 1.5rem; border-radius: 10px; cursor: pointer;
+      display: flex; align-items: center; gap: 0.5rem; font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 16px;
+    }
+    .nav__toggle:hover { background: #d5541a; }
+    .nav__menu {
+      position: absolute; top: 100%; right: 0; background: var(--card);
+      border-radius: 12px; box-shadow: var(--shadow); padding: 0.8rem;
+      min-width: 220px; display: none; margin-top: 0.5rem;
+      border: 1px solid #334155; z-index: 1001;
+    }
+    .nav__menu.show { display: block; }
+    .nav__link {
+      display: block; padding: 0.8rem 1rem; color: var(--text);
+      text-decoration: none; border-radius: 8px; transition: all 0.3s;
+      font-weight: 500;
+      font-size: 16px;
+    }
+    .nav__link:hover { background: #334155; }
+    .nav__link--active {
+      background: var(--accent); color: white;
+    }
+    .nav__link--phone {
+      background: var(--blue); color: white; font-weight: 700;
+      margin-top: 0.5rem; text-align: center; font-size: 1.1rem;
+    }
+    
+    /* Hero */
+    .hero { 
+      background: linear-gradient(135deg, var(--bg) 0%, #1e293b 50%, #0f172a 100%);
+      padding: 160px 0 80px; margin-top: 100px;
+      position: relative; overflow: hidden;
+      text-align: center;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 70% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    /* Reviews Grid */
+    .reviews-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem; margin: 3rem 0;
+    }
+    .review-card { 
+      background: var(--card); padding: 2.5rem; border-radius: 20px; 
+      box-shadow: var(--shadow); border: 1px solid #334155;
+      transition: all 0.3s ease; position: relative;
+      overflow: hidden;
+    }
+    .review-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 4px; background: var(--accent);
+    }
+    .review-card:hover { 
+      transform: translateY(-5px); 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .review-stars {
+      font-size: 1.5rem; color: #fbbf24; margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+    .review-text {
+      font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .review-author {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .review-avatar {
+      width: 50px; height: 50px; border-radius: 50%;
+      background: var(--accent); display: flex; align-items: center;
+      justify-content: center; font-weight: 800; color: white;
+      font-size: 1.2rem;
+    }
+    .review-meta {
+      flex: 1;
+    }
+    .review-service {
+      background: #0f172a; padding: 0.5rem 1rem; border-radius: 8px;
+      display: inline-block; font-size: 0.9rem; color: var(--dim);
+      border: 1px solid #334155;
+    }
+    
+    /* Rating Summary */
+    .rating-summary {
+      background: var(--card); padding: 2.5rem; border-radius: 20px;
+      box-shadow: var(--shadow); border: 1px solid #334155;
+      margin: 3rem 0; text-align: center;
+    }
+    .overall-rating {
+      font-size: 4rem; font-weight: 800; color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .rating-stars {
+      font-size: 2rem; color: #fbbf24; margin-bottom: 2rem;
+      letter-spacing: 3px;
+    }
+    .rating-stats {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem; margin-top: 2rem;
+    }
+    .rating-stat {
+      padding: 1.5rem; background: #0f172a; border-radius: 12px;
+      border: 1px solid #334155;
+    }
+    
+    /* Platform Links */
+    .platform-links {
+      display: flex; justify-content: center; gap: 1.5rem;
+      flex-wrap: wrap; margin: 3rem 0;
+    }
+    .platform-link {
+      background: var(--card); padding: 1.5rem 2rem; border-radius: 12px;
+      border: 1px solid #334155; display: flex; align-items: center;
+      gap: 1rem; font-weight: 600; text-decoration: none;
+      color: var(--text); transition: all 0.3s ease;
+    }
+    .platform-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      background: var(--section-bg); padding: 5rem 0;
+      text-align: center;
+    }
+    
+    /* Emergency Banner */
+    .emergency-banner {
+      background: linear-gradient(135deg, var(--accent) 0%, #d5541a 100%);
+      padding: 3rem; border-radius: 20px; text-align: center;
+      margin: 4rem 0; box-shadow: var(--shadow);
+    }
+    
+    /* Buttons */
+    .btn { 
+      display: inline-block; padding: 1.2rem 2rem; border-radius: 12px;
+      font-weight: 700; text-decoration: none; text-align: center;
+      transition: all 0.3s ease; border: none; cursor: pointer;
+      width: 100%; margin: 0.5rem 0; font-size: 1.1rem;
+    }
+    .btn--primary { background: var(--accent); color: white; }
+    .btn--primary:hover { 
+      background: #d5541a; transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(234, 88, 12, 0.3);
+    }
+    .btn--secondary { background: var(--blue); color: white; }
+    .btn--secondary:hover { 
+      background: #2563eb; transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+    }
+    .btn--success { background: var(--green); color: white; }
+    .btn--large {
+      padding: 1.5rem 3rem; font-size: 1.3rem;
+      width: auto; display: inline-block;
+    }
+    
+    /* Sections */
+    .section { padding: 5rem 0; }
+    .section__title { 
+      font-size: 2.5rem; margin-bottom: 1rem; text-align: center;
+      color: var(--text); font-weight: 700;
+    }
+    .section__subtitle {
+      font-size: 1.2rem; color: var(--dim); text-align: center;
+      margin-bottom: 3rem; max-width: 600px; margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Floating buttons */
+    .floating-buttons {
+      position: fixed; bottom: 2rem; right: 2rem; 
+      display: flex; flex-direction: column; gap: 1rem; z-index: 1000;
+    }
+    .floating-btn {
+      width: 70px; height: 70px; border-radius: 50%; border: none; 
+      background: var(--accent); color: white; font-size: 1.5rem; 
+      box-shadow: var(--shadow); cursor: pointer; transition: all 0.3s ease;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .floating-btn:hover { 
+      transform: translateY(-5px) scale(1.1); 
+      box-shadow: 0 15px 30px rgba(234, 88, 12, 0.4); 
+    }
+    .floating-btn.phone { background: var(--blue); }
+    .floating-btn.whatsapp { background: var(--green); }
+    
+    /* Footer */
+    .footer { 
+      background: var(--header-bg); color: var(--header-text); 
+      padding: 4rem 0 2rem; border-top: 1px solid #334155;
+    }
+    .footer__grid { 
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 3rem; 
+    }
+    
+    /* Utility */
+    .text-center { text-align: center; }
+    .text-dim { color: var(--dim); }
+    .mt-2 { margin-top: 2rem; }
+    .mt-3 { margin-top: 3rem; }
+    .mb-1 { margin-bottom: 1rem; }
+    .small { font-size: 0.9rem; }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header__top { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .slogan { justify-content: center; flex-direction: column; gap: 1rem; }
+      .logo__img { width: 60px; height: 60px; }
+      .hero { padding: 140px 0 60px; margin-top: 140px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .rating-stats { grid-template-columns: 1fr; }
+      .platform-links { flex-direction: column; align-items: center; }
+      .platform-link { width: 100%; max-width: 300px; justify-content: center; }
+      .floating-btn { width: 60px; height: 60px; font-size: 1.3rem; }
+      .btn--large { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="container">
+    <div class="header__top">
+      <div class="slogan">
+        <a href="./" class="logo">
+          <img src="assets/logo-llock.png" alt="L.LOCK" class="logo__img">
+          <span class="logo__text">L.LOCK</span>
+        </a>
+        <span>Слесарь в Берлине 24/7 • Честные фиксированные цены</span>
+      </div>
+      
+      <div style="display: flex; align-items: center; gap: 1.5rem;">
+        <div class="language-switcher">
+          <button class="lang-btn active" data-lang="ru">RU</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
+        
+        <nav class="nav">
+          <button class="nav__toggle" id="navToggle" onclick="toggleMenu()">
+            Меню ☰
+          </button>
+          <div class="nav__menu" id="navMenu">
+            <a href="./" class="nav__link" onclick="closeMenu()">🏠 Главная</a>
+            <a href="uslugi.html" class="nav__link" onclick="closeMenu()">🔧 Услуги</a>
+            <a href="ceny.html" class="nav__link" onclick="closeMenu()">💶 Цены</a>
+            <a href="otzyvy.html" class="nav__link nav__link--active" onclick="closeMenu()">⭐ Отзывы</a>
+            <a href="blog.html" class="nav__link" onclick="closeMenu()">📝 Блог</a>
+            <a href="kontakt.html" class="nav__link" onclick="closeMenu()">📞 Контакты</a>
+            <a href="tel:+491755328410" class="nav__link nav__link--phone" onclick="closeMenu()">📞 +49 175 5328410</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 800;">
+      ⭐ Реальные отзывы
+    </h1>
+    <p class="text-dim" style="font-size: 1.4rem; max-width: 600px; margin: 0 auto;">
+      Мнения наших клиентов — лучшая рекомендация. 
+      Честные отзывы о работе слесаря в Берлине.
+    </p>
+    
+    <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem;">
+      <div style="text-align: center;">
+        <div style="font-size: 3rem; font-weight: 800; color: var(--accent);">4.9</div>
+        <div class="text-dim">Средняя оценка</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-size: 3rem; font-weight: 800; color: var(--accent);">127+</div>
+        <div class="text-dim">Довольных клиентов</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-size: 3rem; font-weight: 800; color: var(--accent);">24/7</div>
+        <div class="text-dim">Работаем круглосуточно</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Rating Summary -->
+<section class="section">
+  <div class="container">
+    <div class="rating-summary">
+      <div class="overall-rating">4.9</div>
+      <div class="rating-stars">★★★★★</div>
+      <p class="text-dim" style="font-size: 1.2rem;">
+        На основе 127 отзывов от реальных клиентов
+      </p>
+      
+      <div class="rating-stats">
+        <div class="rating-stat">
+          <div style="font-size: 2rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem;">96%</div>
+          <div>Рекомендуют</div>
+        </div>
+        <div class="rating-stat">
+          <div style="font-size: 2rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem;">15-30</div>
+          <div>Минут выезд</div>
+        </div>
+        <div class="rating-stat">
+          <div style="font-size: 2rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem;">90%</div>
+          <div>Без повреждений</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews Section -->
+<section class="section section--alt">
+  <div class="container">
+    <h2 class="section__title">Отзывы клиентов</h2>
+    <p class="section__subtitle">
+      Реальные мнения людей, которым мы помогли в сложной ситуации
+    </p>
+    
+    <div class="reviews-grid">
+      <!-- Отзыв 1 -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">
+          "Приехал через 20 минут после звонка. Дверь открыл без повреждений за 5 минут. 
+          Цена соответствовала озвученной по телефону. Очень профессионально!"
+        </div>
+        <div class="review-author">
+          <div class="review-avatar">АМ</div>
+          <div class="review-meta">
+            <div style="font-weight: 600;">Анна Мюллер</div>
+            <div class="text-dim">Берлин-Панков</div>
+          </div>
+        </div>
+        <div class="review-service">🚪 Вскрытие двери</div>
+      </div>
+      
+      <!-- Отзыв 2 -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">
+          "Ночью в 2 часа закрылись ключи в машине. Мастер приехал за 25 минут, 
+          открыл без единой царапины. Спасибо за оперативность!"
+        </div>
+        <div class="review-author">
+          <div class="review-avatar">ДВ</div>
+          <div class="review-meta">
+            <div style="font-weight: 600;">Дмитрий Вайс</div>
+            <div class="text-dim">Берлин-Нойкёльн</div>
+          </div>
+        </div>
+        <div class="review-service">🚗 Открытие авто</div>
+      </div>
+      
+      <!-- Отзыв 3 -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">
+          "Захлопнулась дверь в ванную, ребенок остался внутри. Приехали быстрее 
+          обещанного, аккуратно все открыли. Цена фиксированная, как и договаривались."
+        </div>
+        <div class="review-author">
+          <div class="review-avatar">СК</div>
+          <div class="review-meta">
+            <div style="font-weight: 600;">Светлана Кох</div>
+            <div class="text-dim">Берлин-Митте</div>
+          </div>
+        </div>
+        <div class="review-service">🚪 Аварийное вскрытие</div>
+      </div>
+      
+      <!-- Отзыв 4 -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">
+          "Поменяли старый замок на новый. Качественная работа, все чисто, 
+          мусор убрали. Дали гарантию и полезные советы по эксплуатации."
+        </div>
+        <div class="review-author">
+          <div class="review-avatar">ТШ</div>
+          <div class="review-meta">
+            <div style="font-weight: 600;">Томас Шмидт</div>
+            <div class="text-dim">Берлин-Шарлоттенбург</div>
+          </div>
+        </div>
+        <div class="review-service">🔐 Замена замка</div>
+      </div>
+      
+      <!-- Отзыв 5 -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">
+          "В субботу вечером захлопнулась входная дверь. Несмотря на выходной и вечернее время, 
+          приехали быстро. Цена честная, работа качественная."
+        </div>
+        <div class="review-author">
+          <div class="review-avatar">ЛБ</div>
+          <div class="review-meta">
+            <div style="font-weight: 600;">Лара Браун</div>
+            <div class="text-dim">Берлин-Фридрихсхайн</div>
+          </div>
+        </div>
+        <div class="review-service">🚪 Выходной вызов</div>
+      </div>
+      
+      <!-- Отзыв 6 -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">
+          "Заклинило замок в Mercedes. Боялся, что повредят дорогую электронику. 
+          Открыли аккуратно, все работает. Профессионалы своего дела!"
+        </div>
+        <div class="review-author">
+          <div class="review-avatar">МФ</div>
+          <div class="review-meta">
+            <div style="font-weight: 600;">Маркус Фогель</div>
+            <div class="text-dim">Потсдам</div>
+          </div>
+        </div>
+        <div class="review-service">🚗 Премиум авто</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Platform Links -->
+<section class="section">
+  <div class="container">
+    <h2 class="section__title">Больше отзывов на платформах</h2>
+    <p class="section__subtitle">
+      Читайте дополнительные отзывы и оставляйте свои на этих платформах
+    </p>
+    
+    <div class="platform-links">
+      <a href="#" class="platform-link">
+        <span style="font-size: 1.5rem;">⭐</span>
+        <div>
+          <div style="font-weight: 700;">Google Отзывы</div>
+          <div class="text-dim small">4.8 ★ (89 отзывов)</div>
+        </div>
+      </a>
+      
+      <a href="#" class="platform-link">
+        <span style="font-size: 1.5rem;">💛</span>
+        <div>
+          <div style="font-weight: 700;">Yellow Pages</div>
+          <div class="text-dim small">4.7 ★ (67 отзывов)</div>
+        </div>
+      </a>
+      
+      <a href="#" class="platform-link">
+        <span style="font-size: 1.5rem;">🔍</span>
+        <div>
+          <div style="font-weight: 700;">MeinProfí</div>
+          <div class="text-dim small">4.9 ★ (54 отзыва)</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="section__title">Оставьте свой отзыв</h2>
+    <p class="section__subtitle">
+      Помогите другим сделать правильный выбор. Расскажите о вашем опыте работы с нами.
+    </p>
+    
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+      <a href="tel:+491755328410" class="btn btn--large" style="background: var(--accent); color: white;">
+        📞 Позвонить и рассказать
+      </a>
+      <a href="https://wa.me/491755328410" class="btn btn--large" style="background: var(--green); color: white;">
+        💬 Написать в WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Emergency Banner -->
+<section class="section">
+  <div class="container">
+    <div class="emergency-banner">
+      <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: white;">
+        🚨 Нужна срочная помощь?
+      </h2>
+      <p style="font-size: 1.3rem; margin-bottom: 2rem; color: white; opacity: 0.9;">
+        Работаем 24/7 • Выезд за 15-30 минут • Фиксированные цены
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="tel:+491755328410" class="btn btn--large" style="background: white; color: var(--accent);">
+          📞 Срочный вызов
+        </a>
+        <a href="https://wa.me/491755328410" class="btn btn--large" style="background: var(--green); color: white;">
+          💬 Написать в WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Floating Buttons -->
+<div class="floating-buttons">
+  <button class="floating-btn phone" onclick="window.location.href='tel:+491755328410'">📞</button>
+  <button class="floating-btn whatsapp" onclick="window.open('https://wa.me/491755328410')">💬</button>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <strong style="font-size: 1.3rem; color: var(--accent);">L.LOCK Schlüsseldienst</strong>
+        <p class="text-dim mt-2" style="line-height: 1.6;">
+          🕒 Работаем 24/7<br>
+          💰 Честные фиксированные цены<br>
+          🚗 По всему Берлину и области
+        </p>
+      </div>
+      <div>
+        <strong style="font-size: 1.1rem;">📞 Контакты</strong>
+        <p class="text-dim mt-2" style="line-height: 1.6;">
+          <a href="tel:+491755328410" style="color: #cbd5e1; text-decoration: none; font-weight: 600;">
+            +49 175 5328410
+          </a><br>
+          📧 info@llock.de<br>
+          🕒 Круглосуточно
+        </p>
+      </div>
+      <div>
+        <strong style="font-size: 1.1rem;">⭐ Отзывы</strong>
+        <p class="text-dim mt-2" style="line-height: 1.6;">
+          ★★★★★ 4.9/5<br>
+          127+ довольных клиентов<br>
+          96% рекомендуют<br>
+          Реальные отзывы
+        </p>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #334155; margin-top: 3rem; padding-top: 2rem; text-align: center;">
+      <p class="text-dim">© <span id="year"></span> L.LOCK Schlüsseldienst Berlin. Все права защищены.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ПРОСТОЙ РАБОЧИЙ СКРИПТ
+function toggleMenu() {
+  var menu = document.getElementById('navMenu');
+  if (menu) {
+    menu.classList.toggle('show');
+    console.log('Меню переключено');
+  }
+}
+
+function closeMenu() {
+  var menu = document.getElementById('navMenu');
+  if (menu) {
+    menu.classList.remove('show');
+    console.log('Меню закрыто');
+  }
+}
+
+// Год в футере
+document.addEventListener('DOMContentLoaded', function() {
+  var yearElement = document.getElementById('year');
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+  
+  // Переключение языка
+  var langButtons = document.querySelectorAll('.lang-btn');
+  langButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      // Убираем active у всех кнопок
+      langButtons.forEach(function(b) {
+        b.classList.remove('active');
+      });
+      // Добавляем active нажатой кнопке
+      this.classList.add('active');
+      console.log('Язык изменен на: ' + this.dataset.lang);
+    });
+  });
+});
+
+// Закрытие меню при клике вне его
+document.addEventListener('click', function(event) {
+  var menu = document.getElementById('navMenu');
+  var button = document.getElementById('navToggle');
+  
+  if (menu && button) {
+    if (!menu.contains(event.target) && !button.contains(event.target)) {
+      menu.classList.remove('show');
+    }
+  }
+});
+</script>
+
+</body>
+</html>
