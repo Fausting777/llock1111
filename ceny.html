@@ -72,6 +72,7 @@
       padding: 0.8rem 1.5rem; border-radius: 10px; cursor: pointer;
       display: flex; align-items: center; gap: 0.5rem; font-weight: 600;
       transition: all 0.3s ease;
+      font-size: 16px;
     }
     .nav__toggle:hover { background: #d5541a; }
     .nav__menu {
@@ -85,6 +86,7 @@
       display: block; padding: 0.8rem 1rem; color: var(--text);
       text-decoration: none; border-radius: 8px; transition: all 0.3s;
       font-weight: 500;
+      font-size: 16px;
     }
     .nav__link:hover { background: #334155; }
     .nav__link--active {
@@ -108,49 +110,53 @@
       pointer-events: none;
     }
     
-    /* Price Tables */
-    .price-tables {
+    /* Services Grid */
+    .services-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 2.5rem; margin: 3rem 0;
     }
-    .price-table { 
+    .service-card { 
       background: var(--card); padding: 2.5rem; border-radius: 20px; 
       box-shadow: var(--shadow); border: 1px solid #334155;
       transition: all 0.3s ease; position: relative;
       overflow: hidden;
     }
-    .price-table::before {
+    .service-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0;
       height: 4px; background: var(--accent);
     }
-    .price-table:hover { 
+    .service-card:hover { 
       transform: translateY(-5px); 
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
-    .price-table__icon {
+    .service-card__icon {
       font-size: 3rem; margin-bottom: 1.5rem; display: block;
     }
-    .price-table__title {
-      font-size: 1.8rem; margin-bottom: 2rem; color: var(--accent);
-      text-align: center;
+    .service-card__price {
+      font-size: 2.5rem; font-weight: 800; color: var(--accent);
+      margin: 1rem 0;
     }
-    .price-item {
-      display: flex; justify-content: space-between;
-      align-items: center; padding: 1rem 0;
-      border-bottom: 1px solid #334155;
+    .service-card__features {
+      list-style: none; margin: 1.5rem 0;
     }
-    .price-item:last-child {
-      border-bottom: none;
+    .service-card__features li {
+      padding: 0.5rem 0; color: var(--dim);
+      position: relative; padding-left: 1.5rem;
     }
-    .price-item__name {
-      flex: 1; color: var(--text);
+    .service-card__features li::before {
+      content: '✓'; position: absolute; left: 0;
+      color: var(--accent); font-weight: bold;
     }
-    .price-item__price {
-      font-size: 1.5rem; font-weight: 800; color: var(--accent);
-      margin-left: 1rem;
+    
+    /* Price Highlight */
+    .price-highlight {
+      display: flex; gap: 2rem; justify-content: center; 
+      flex-wrap: wrap; margin: 3rem 0;
     }
-    .price-item__note {
-      font-size: 0.9rem; color: var(--dim); margin-top: 0.3rem;
+    .price-item-simple {
+      text-align: center; background: var(--card); 
+      padding: 2rem; border-radius: 16px; border: 1px solid #334155;
+      min-width: 200px;
     }
     
     /* Surcharge Panel */
@@ -158,9 +164,6 @@
       background: var(--card); padding: 2.5rem; border-radius: 20px;
       box-shadow: var(--shadow); border: 1px solid #334155;
       margin: 3rem 0; text-align: center;
-    }
-    .surcharge-panel__title {
-      font-size: 2rem; margin-bottom: 2rem; color: var(--accent);
     }
     .surcharge-items {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -187,7 +190,7 @@
     }
     
     /* Guarantee Section */
-    .guarantee {
+    .section--alt {
       background: var(--section-bg); padding: 5rem 0;
     }
     .guarantee-grid {
@@ -225,6 +228,7 @@
       background: #2563eb; transform: translateY(-2px);
       box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
     }
+    .btn--success { background: var(--green); color: white; }
     .btn--large {
       padding: 1.5rem 3rem; font-size: 1.3rem;
       width: auto; display: inline-block;
@@ -284,7 +288,9 @@
       .slogan { justify-content: center; flex-direction: column; gap: 1rem; }
       .logo__img { width: 60px; height: 60px; }
       .hero { padding: 140px 0 60px; margin-top: 140px; }
-      .price-tables { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .price-highlight { flex-direction: column; align-items: center; }
+      .price-item-simple { width: 100%; max-width: 300px; }
       .surcharge-items { grid-template-columns: 1fr; }
       .floating-btn { width: 60px; height: 60px; font-size: 1.3rem; }
       .btn--large { width: 100%; }
@@ -341,16 +347,16 @@
       Всегда согласуем стоимость до выезда.
     </p>
     
-    <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem;">
-      <div style="text-align: center;">
+    <div class="price-highlight">
+      <div class="price-item-simple">
         <div style="font-size: 3rem; font-weight: 800; color: var(--accent);">90€</div>
         <div class="text-dim">Дверь захлопнулась</div>
       </div>
-      <div style="text-align: center;">
+      <div class="price-item-simple">
         <div style="font-size: 3rem; font-weight: 800; color: var(--accent);">150€</div>
         <div class="text-dim">Дверь на ключ</div>
       </div>
-      <div style="text-align: center;">
+      <div class="price-item-simple">
         <div style="font-size: 3rem; font-weight: 800; color: var(--accent);">190€</div>
         <div class="text-dim">Открытие авто</div>
       </div>
@@ -361,110 +367,71 @@
 <!-- Main Prices Section -->
 <section class="section">
   <div class="container">
-    <h2 class="section__title">Основные цены</h2>
+    <h2 class="section__title">Основные услуги и цены</h2>
     <p class="section__subtitle">
       Четкие фиксированные цены на все виды услуг. Без сюрпризов и скрытых платежей.
     </p>
     
-    <div class="price-tables">
+    <div class="services-grid">
       <!-- Вскрытие дверей -->
-      <div class="price-table">
-        <div class="price-table__icon">🚪</div>
-        <h3 class="price-table__title">Вскрытие дверей</h3>
-        
-        <div class="price-item">
-          <div class="price-item__name">
-            Дверь захлопнулась
-            <div class="price-item__note">Без ключа в замке</div>
-          </div>
-          <div class="price-item__price">90€</div>
-        </div>
-        
-        <div class="price-item">
-          <div class="price-item__name">
-            Дверь закрыта на ключ
-            <div class="price-item__note">Ключ повернут или заклинило</div>
-          </div>
-          <div class="price-item__price">150€</div>
-        </div>
-        
-        <div class="price-item">
-          <div class="price-item__name">
-            Сложные случаи
-            <div class="price-item__note">Броненакладки, многозапорные системы</div>
-          </div>
-          <div class="price-item__price">от 200€</div>
-        </div>
-        
-        <a href="tel:+491755328410" class="btn btn--primary" style="margin-top: 2rem;">
+      <div class="service-card">
+        <div class="service-card__icon">🚪</div>
+        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Вскрытие дверей</h3>
+        <div class="service-card__price">90€ - 150€</div>
+        <p class="text-dim" style="line-height: 1.6;">
+          Аккуратное вскрытие без повреждений дверной коробки и замка. 
+          Работаем с любыми типами дверей и замков.
+        </p>
+        <ul class="service-card__features">
+          <li>Захлопнувшиеся двери - 90€</li>
+          <li>Закрытые на ключ - 150€</li>
+          <li>Без повреждений</li>
+          <li>15-30 минут</li>
+          <li>Любые типы замков</li>
+        </ul>
+        <a href="tel:+491755328410" class="btn btn--primary">
           🚀 Вызвать мастера
         </a>
       </div>
       
       <!-- Открытие авто -->
-      <div class="price-table">
-        <div class="price-table__icon">🚗</div>
-        <h3 class="price-table__title">Открытие автомобилей</h3>
-        
-        <div class="price-item">
-          <div class="price-item__name">
-            Стандартные автомобили
-            <div class="price-item__note">Легковые авто до 2020 года</div>
-          </div>
-          <div class="price-item__price">190€</div>
-        </div>
-        
-        <div class="price-item">
-          <div class="price-item__name">
-            Премиум автомобили
-            <div class="price-item__note">BMW, Mercedes, Audi и т.д.</div>
-          </div>
-          <div class="price-item__price">250€</div>
-        </div>
-        
-        <div class="price-item">
-          <div class="price-item__name">
-            Современные системы
-            <div class="price-item__note">Электронные ключи, кнопки START</div>
-          </div>
-          <div class="price-item__price">от 300€</div>
-        </div>
-        
-        <a href="tel:+491755328410" class="btn btn--primary" style="margin-top: 2rem;">
+      <div class="service-card">
+        <div class="service-card__icon">🚗</div>
+        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Открытие автомобилей</h3>
+        <div class="service-card__price">190€</div>
+        <p class="text-dim" style="line-height: 1.6;">
+          Без царапин и вмятин. Современное оборудование для любых 
+          марок автомобилей, включая премиум-класс.
+        </p>
+        <ul class="service-card__features">
+          <li>Все марки автомобилей</li>
+          <li>Без повреждений ЛКП</li>
+          <li>10-20 минут</li>
+          <li>Электронные ключи</li>
+          <li>Современное оборудование</li>
+        </ul>
+        <a href="tel:+491755328410" class="btn btn--primary">
           🚀 Вызвать мастера
         </a>
       </div>
       
       <!-- Замена замков -->
-      <div class="price-table">
-        <div class="price-table__icon">🔐</div>
-        <h3 class="price-table__title">Замена и ремонт</h3>
-        
-        <div class="price-item">
-          <div class="price-item__name">
-            Замена цилиндра
-            <div class="price-item__note">Стандартные замки</div>
-          </div>
-          <div class="price-item__price">от 80€</div>
-        </div>
-        
-        <div class="price-item">
-          <div class="price-item__name">
-            Замена всего замка
-            <div class="price-item__note">С установкой и регулировкой</div>
-          </div>
-          <div class="price-item__price">от 120€</div>
-        </div>
-        
-        <div class="price-item">
-          <div class="price-item__name">
-            Установка защиты
-            <div class="price-item__note">Броненакладки, дополнительные замки</div>
-          </div>
-          <div class="price-item__price">от 150€</div>
-        </div>
-        
-        <a href="tel:+491755328410" class="btn btn--primary" style="margin-top: 2rem;">
+      <div class="service-card">
+        <div class="service-card__icon">🔐</div>
+        <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Замена и ремонт замков</h3>
+        <div class="service-card__price">от 80€</div>
+        <p class="text-dim" style="line-height: 1.6;">
+          Установка новых замков любой сложности с гарантией. 
+          Подбор и монтаж качественных механизмов.
+        </p>
+        <ul class="service-card__features">
+          <li>Новые замки от 80€</li>
+          <li>Ремонт существующих</li>
+          <li>Гарантия на работу</li>
+          <li>Качественные материалы</li>
+          <li>Консультация по выбору</li>
+        </ul>
+        <a href="tel:+491755328410" class="btn btn--primary">
           🚀 Вызвать мастера
         </a>
       </div>
@@ -473,15 +440,14 @@
 </section>
 
 <!-- Surcharge Section -->
-<section class="section" style="background: var(--section-bg);">
+<section class="section section--alt">
   <div class="container">
+    <h2 class="section__title">⚡ Дополнительные условия</h2>
+    <p class="section__subtitle">
+      Цены указаны для стандартного вызова в рабочее время по Берлину
+    </p>
+    
     <div class="surcharge-panel">
-      <h2 class="surcharge-panel__title">⚡ Дополнительные условия</h2>
-      <p class="text-dim" style="font-size: 1.2rem;">
-        Цены указаны для стандартного вызова в рабочее время по Берлину. 
-        В нерабочее время и за пределами Берлина применяются следующие надбавки:
-      </p>
-      
       <div class="surcharge-items">
         <div class="surcharge-item">
           <div class="surcharge-item__percentage">+50%</div>
@@ -511,27 +477,8 @@
   </div>
 </section>
 
-<!-- Payment Methods -->
-<section class="section">
-  <div class="container">
-    <h2 class="section__title">💳 Способы оплаты</h2>
-    <p class="section__subtitle">
-      Принимаем различные способы оплаты для вашего удобства
-    </p>
-    
-    <div class="payment-methods">
-      <div class="payment-method">💵 Наличные</div>
-      <div class="payment-method">📱 Apple Pay</div>
-      <div class="payment-method">💳 Mastercard</div>
-      <div class="payment-method">🏦 VISA</div>
-      <div class="payment-method">📲 PayPal</div>
-      <div class="payment-method">⚡ G Pay</div>
-    </div>
-  </div>
-</section>
-
 <!-- Guarantee Section -->
-<section class="guarantee">
+<section class="section">
   <div class="container">
     <h2 class="section__title">✅ Наши гарантии</h2>
     <p class="section__subtitle">
@@ -562,4 +509,159 @@
         <h3 style="margin-bottom: 1rem;">Качество работы</h3>
         <p class="text-dim">
           Открываем без повреждений в 90% случаев. 
-         
+          Используем современное оборудование.
+        </p>
+      </div>
+      
+      <div class="guarantee-item">
+        <div class="guarantee-item__icon">📞</div>
+        <h3 style="margin-bottom: 1rem;">Прямой контакт</h3>
+        <p class="text-dim">
+          Общаетесь напрямую с мастером. 
+          Без посредников и call-центров.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Payment Methods -->
+<section class="section section--alt">
+  <div class="container">
+    <h2 class="section__title">💳 Способы оплаты</h2>
+    <p class="section__subtitle">
+      Принимаем различные способы оплаты для вашего удобства
+    </p>
+    
+    <div class="payment-methods">
+      <div class="payment-method">💵 Наличные</div>
+      <div class="payment-method">📱 Apple Pay</div>
+      <div class="payment-method">💳 Mastercard</div>
+      <div class="payment-method">🏦 VISA</div>
+      <div class="payment-method">📲 PayPal</div>
+      <div class="payment-method">⚡ G Pay</div>
+    </div>
+  </div>
+</section>
+
+<!-- Emergency Banner -->
+<section class="section">
+  <div class="container">
+    <div class="emergency-banner">
+      <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: white;">
+        🚨 Нужна срочная помощь?
+      </h2>
+      <p style="font-size: 1.3rem; margin-bottom: 2rem; color: white; opacity: 0.9;">
+        Работаем 24/7 • Выезд за 15-30 минут • Фиксированные цены
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="tel:+491755328410" class="btn btn--large" style="background: white; color: var(--accent);">
+          📞 Срочный вызов
+        </a>
+        <a href="https://wa.me/491755328410" class="btn btn--large" style="background: var(--green); color: white;">
+          💬 Написать в WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Floating Buttons -->
+<div class="floating-buttons">
+  <button class="floating-btn phone" onclick="window.location.href='tel:+491755328410'">📞</button>
+  <button class="floating-btn whatsapp" onclick="window.open('https://wa.me/491755328410')">💬</button>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <strong style="font-size: 1.3rem; color: var(--accent);">L.LOCK Schlüsseldienst</strong>
+        <p class="text-dim mt-2" style="line-height: 1.6;">
+          🕒 Работаем 24/7<br>
+          💰 Честные фиксированные цены<br>
+          🚗 По всему Берлину и области
+        </p>
+      </div>
+      <div>
+        <strong style="font-size: 1.1rem;">📞 Контакты</strong>
+        <p class="text-dim mt-2" style="line-height: 1.6;">
+          <a href="tel:+491755328410" style="color: #cbd5e1; text-decoration: none; font-weight: 600;">
+            +49 175 5328410
+          </a><br>
+          📧 info@llock.de<br>
+          🕒 Круглосуточно
+        </p>
+      </div>
+      <div>
+        <strong style="font-size: 1.1rem;">💶 Цены</strong>
+        <p class="text-dim mt-2" style="line-height: 1.6;">
+          🚪 Двери: от 90€<br>
+          🚗 Авто: от 190€<br>
+          🔐 Замки: от 80€<br>
+          ⚡ Срочный выезд
+        </p>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #334155; margin-top: 3rem; padding-top: 2rem; text-align: center;">
+      <p class="text-dim">© <span id="year"></span> L.LOCK Schlüsseldienst Berlin. Все права защищены.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ПРОСТОЙ РАБОЧИЙ СКРИПТ
+function toggleMenu() {
+  var menu = document.getElementById('navMenu');
+  if (menu) {
+    menu.classList.toggle('show');
+    console.log('Меню переключено');
+  }
+}
+
+function closeMenu() {
+  var menu = document.getElementById('navMenu');
+  if (menu) {
+    menu.classList.remove('show');
+    console.log('Меню закрыто');
+  }
+}
+
+// Год в футере
+document.addEventListener('DOMContentLoaded', function() {
+  var yearElement = document.getElementById('year');
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+  
+  // Переключение языка
+  var langButtons = document.querySelectorAll('.lang-btn');
+  langButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      // Убираем active у всех кнопок
+      langButtons.forEach(function(b) {
+        b.classList.remove('active');
+      });
+      // Добавляем active нажатой кнопке
+      this.classList.add('active');
+      console.log('Язык изменен на: ' + this.dataset.lang);
+    });
+  });
+});
+
+// Закрытие меню при клике вне его
+document.addEventListener('click', function(event) {
+  var menu = document.getElementById('navMenu');
+  var button = document.getElementById('navToggle');
+  
+  if (menu && button) {
+    if (!menu.contains(event.target) && !button.contains(event.target)) {
+      menu.classList.remove('show');
+    }
+  }
+});
+</script>
+
+</body>
+</html>
