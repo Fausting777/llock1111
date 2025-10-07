@@ -1,74 +1,49 @@
 <!DOCTYPE html>
+<html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Kontakt – L.LOCK Schlüsseldienst Berlin</title>
-<link rel="icon" href="favicon.ico" />
-<link rel="stylesheet" href="assets/style.css?v=4" />
-</head>
-<body>
-<header class="topbar">
-<div class="container">
-<a class="brand" href="./"><img class="brand-logo" src="assets/logo-llock.png" alt="L.LOCK Logo" /><span class="brand-name">L.LOCK</span></a>
-<nav class="nav">
-<a class="nav-link" href="./">Start</a>
-<a class="nav-link" href="blog.html">Blog</a>
-<a class="nav-link" href="bewertungen.html">Bewertungen</a>
-<a class="nav-link active" href="kontakt.html">Kontakt</a>
-<a class="call-now" href="tel:+491755328410">📞 +49 175 5328410</a>
-</nav>
-</div>
-</header>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Контакты — L.LOCK Слесарь в Берлине</title>
+  <meta name="description" content="Контакты слесаря L.LOCK в Берлине: телефон, WhatsApp, e-mail, адрес, форма обратной связи. Работаем 24/7, выезд по Берлину и области." />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    :root{
+      --bg:#0f172a; --card:#1e293b; --text:#f1f5f9; --dim:#94a3b8;
+      --accent:#ea580c; --blue:#3b82f6; --green:#22c55e;
+      --header-bg:#020617; --shadow:0 8px 30px rgba(0,0,0,.3);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;max-width:100vw;overflow-x:hidden}
+    .container{width:min(1100px,92%);margin:0 auto}
 
+    /* Header */
+    .header{background:var(--header-bg);color:var(--text);position:fixed;top:0;left:0;right:0;z-index:1000;border-bottom:1px solid #334155}
+    .header__top{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 0}
+    .slogan{display:flex;align-items:center;gap:1.5rem;color:#cbd5e1}
+    .logo{display:flex;align-items:center;gap:1rem;text-decoration:none}
+    .logo__img{width:70px;height:70px;border-radius:12px;border:2px solid var(--accent);box-shadow:0 4px 20px rgba(234,88,12,.3);transition:.3s}
+    .logo__img:hover{transform:scale(1.05)}
+    .logo__text{font-weight:800;font-size:1.4rem;color:white}
+    .language-switcher{display:flex;background:#334155;border-radius:10px;padding:3px}
+    .lang-btn{padding:.5rem 1rem;border:none;background:transparent;color:#cbd5e1;border-radius:8px;cursor:pointer;font-size:.9rem;font-weight:600;transition:.3s}
+    .lang-btn.active{background:var(--accent);color:white}
+    .nav{position:relative}
+    .nav__toggle{background:var(--accent);color:white;border:none;padding:.8rem 1.5rem;border-radius:10px;cursor:pointer;font-weight:600}
+    .nav__menu{position:absolute;top:100%;right:0;background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:.8rem;min-width:220px;display:none;margin-top:.5rem;border:1px solid #334155;z-index:1001}
+    .nav__menu.show{display:block}
+    .nav__link{display:block;padding:.8rem 1rem;color:var(--text);text-decoration:none;border-radius:8px;transition:.3s}
+    .nav__link:hover{background:#334155}
+    .nav__link--active{background:var(--accent);color:white}
+    .nav__link--phone{background:var(--blue);color:white;font-weight:700;margin-top:.5rem;text-align:center}
 
-<main class="section">
-<div class="container grid-2">
-<div>
-<h1>Kontakt</h1>
-<p class="dim">Telefonisch 24/7 erreichbar. Binnen Berlin ohne Anfahrtskosten. Umland bis 30 km (+1,5 €/km).</p>
-<ul class="info">
-<li><strong>Telefon:</strong> <a href="tel:+491755328410">+49 175 5328410</a></li>
-<li><strong>E‑Mail:</strong> <a href="mailto:info@llock.de">info@llock.de</a> (Platzhalter)</li>
-<li><strong>Adresse:</strong> Berlin</li>
-<li><strong>Öffnungszeiten:</strong> 24/7</li>
-</ul>
-<div class="socials">
-<a class="chip" href="#">Instagram</a>
-<a class="chip" href="#">Facebook</a>
-<a class="chip" href="#">TikTok</a>
-</div>
-</div>
-<form class="card form lift" id="contact-form">
-<label>Ihr Name
-<input name="name" type="text" placeholder="Max Mustermann" required>
-</label>
-<label>Telefon
-<input name="phone" type="tel" placeholder="Ihre Telefonnummer" required>
-</label>
-<label>E‑Mail
-<input name="email" type="email" placeholder="name@mail.de">
-</label>
-<label>Nachricht
-<textarea name="msg" rows="5" placeholder="Kurz schildern, was passiert ist…" required></textarea>
-</label>
-<button class="btn" type="submit">Senden</button>
-<p class="muted small">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten zur Bearbeitung Ihrer Anfrage zu.</p>
-</form>
-</div>
+    /* Hero */
+    .hero{background:linear-gradient(135deg,var(--bg) 0%,#1e293b 50%,#0f172a 100%);padding:160px 0 80px;margin-top:100px;text-align:center}
+    .hero h1{font-size:3rem;font-weight:800;margin-bottom:1rem}
+    .text-dim{color:var(--dim)}
 
-
-<div class="map-wrap">
-<!-- Заглушка под карту. Подменим на реальный iframe, когда будет адрес/карта. -->
-<iframe class="map" title="Berlin Map" srcdoc="<style>html,body{margin:0;height:100%;font:14px sans-serif} .ph{display:flex;align-items:center;justify-content:center;height:100%;background:#eef3ff;color:#1e40af}</style><div class='ph'>Karte folgt…</div>"></iframe>
-</div>
-</main>
-
-
-<footer class="footer">
-<div class="container legal">
-<p class="small muted">© <span id="year"></span> L.LOCK Schlüsseldienst Berlin.</p>
-</div>
-</footer>
-<script src="assets/script.js?v=2"></script>
-</body>
-</html>
+    /* Cards grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:2.5rem 0}
+    .card{background:var(--card);border:1px solid #334155;border-radius:16px;box-shadow:var(--shadow);padding:1.5rem}
+    .card h3{margin-bottom:.5rem}
+    .contact-line{display:flex;align-items:center;gap:.6rem;margin:.35rem 0}
+    .contact-l
