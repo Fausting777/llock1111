@@ -46,4 +46,216 @@
     .card{background:var(--card);border:1px solid #334155;border-radius:16px;box-shadow:var(--shadow);padding:1.5rem}
     .card h3{margin-bottom:.5rem}
     .contact-line{display:flex;align-items:center;gap:.6rem;margin:.35rem 0}
-    .contact-l
+    .contact-line a{color:#e2e8f0;text-decoration:none}
+    .btn{display:inline-block;padding:1rem 1.25rem;border-radius:12px;font-weight:700;text-decoration:none;border:none;cursor:pointer}
+    .btn--primary{background:var(--accent);color:white}
+    .btn--whatsapp{background:var(--green);color:white}
+    .btn--ghost{background:#334155;color:#e2e8f0}
+
+    /* Form */
+    .form{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .form .full{grid-column:1/-1}
+    .input, .textarea{width:100%;padding:.9rem 1rem;border-radius:10px;border:1px solid #334155;background:#0f172a;color:#e2e8f0}
+    .textarea{min-height:140px;resize:vertical}
+    .note{font-size:.9rem;margin-top:.5rem}
+    .success, .error{margin-top:1rem;padding:.9rem 1rem;border-radius:10px}
+    .success{background:#0a3;opacity:.9}
+    .error{background:#7a1f1f;opacity:.9}
+
+    /* Map */
+    .map{border:1px solid #334155;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+
+    /* Footer mini */
+    .mini-footer{border-top:1px solid #334155;text-align:center;padding:2rem 0;margin-top:2rem;color:var(--dim)}
+
+    @media (max-width:768px){
+      .header__top{flex-direction:column;gap:1rem;text-align:center}
+      .hero{padding:140px 0 60px;margin-top:140px}
+      .form{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="container">
+    <div class="header__top">
+      <div class="slogan">
+        <a href="./" class="logo">
+          <img src="assets/logo-llock.png" alt="L.LOCK" class="logo__img">
+          <span class="logo__text">L.LOCK</span>
+        </a>
+        <span>Слесарь в Берлине 24/7 • Честные фиксированные цены</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1.5rem;">
+        <div class="language-switcher">
+          <button class="lang-btn active" data-lang="ru">RU</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
+        <nav class="nav">
+          <button class="nav__toggle" id="navToggle" onclick="toggleMenu()">Меню ☰</button>
+          <div class="nav__menu" id="navMenu">
+            <a href="./" class="nav__link">🏠 Главная</a>
+            <a href="uslugi.html" class="nav__link">🔧 Услуги</a>
+            <a href="ceny.html" class="nav__link">💶 Цены</a>
+            <a href="otzyvy.html" class="nav__link">⭐ Отзывы</a>
+            <a href="blog.html" class="nav__link">📝 Блог</a>
+            <a href="kontakt.html" class="nav__link nav__link--active">📞 Контакты</a>
+            <a href="tel:+491755328410" class="nav__link nav__link--phone">📞 +49 175 5328410</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <h1>Свяжитесь с L.LOCK</h1>
+    <p class="text-dim">Работаем 24/7 по всему Берлину и ближайшим городкам (до 30 км). Ответим быстро.</p>
+  </div>
+</section>
+
+<!-- Contacts grid -->
+<section>
+  <div class="container">
+    <div class="grid">
+      <div class="card">
+        <h3>📞 Телефон</h3>
+        <p class="contact-line"><a href="tel:+491755328410"><strong>+49 175 5328410</strong></a> — срочные вызовы</p>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem">
+          <a class="btn btn--primary" href="tel:+491755328410">Позвонить</a>
+          <a class="btn btn--whatsapp" href="https://wa.me/491755328410">Написать в WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>✉️ Электронная почта</h3>
+        <p class="contact-line"><a id="mailtoLink" href="mailto:info@llock.de">info@llock.de</a></p>
+        <p class="text-dim">Пишите по вопросам сотрудничества и не срочных заявок.</p>
+      </div>
+
+      <div class="card">
+        <h3>📍 Адрес (штаб)</h3>
+        <p class="text-dim">Berlin & Umgebung • Выезд по городу и области</p>
+        <p class="text-dim">График: 24/7 • Ночью действует доплата по тарифу</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Map -->
+<section>
+  <div class="container">
+    <div class="map">
+      <!-- Можно заменить place по вкусу -->
+      <iframe title="L.LOCK Berlin" src="https://www.google.com/maps?q=Berlin&output=embed" width="100%" height="320" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Contact form -->
+<section>
+  <div class="container">
+    <div class="card" style="margin-top:2rem">
+      <h3 style="margin-bottom:.8rem">Напишите нам</h3>
+      <p class="text-dim" style="margin-bottom:1rem">Короткая форма — попадёт на e-mail. Мы ответим как можно быстрее.</p>
+
+      <form id="contactForm" class="form" novalidate>
+        <!-- honeypot -->
+        <input type="text" name="company" autocomplete="off" style="position:absolute;left:-9999px;top:-9999px" tabindex="-1" aria-hidden="true">
+        <input class="input" name="name" placeholder="Ваше имя*" required>
+        <input class="input" name="phone" placeholder="Телефон*" required>
+        <input class="input full" type="email" name="email" placeholder="E-mail (по желанию)">
+        <textarea class="textarea full" name="message" placeholder="Сообщение* (что случилось?)" required></textarea>
+        <button class="btn btn--primary full" type="submit">Отправить</button>
+        <p class="note text-dim full">Нажимая «Отправить», вы соглашаетесь на обработку данных для ответа на заявку.</p>
+        <div id="formStatus" class="full" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="mini-footer">© <span id="year"></span> L.LOCK Schlüsseldienst Berlin</div>
+
+<script>
+/* ====== НАСТРОЙКИ ======
+ * УКАЖИТЕ ВАШ EMAIL ПОЛУЧАТЕЛЯ НИЖЕ:
+ */
+const RECEIVER_EMAIL = 'info@llock.de'; // ← ← ← ЗАМЕНИТЕ на ваш адрес для получения писем
+
+/* Header interactions */
+function toggleMenu(){var m=document.getElementById('navMenu');if(m)m.classList.toggle('show')}
+document.addEventListener('DOMContentLoaded',function(){
+  var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
+  // переключатель языка (визуально)
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')})
+  });
+  // клик вне меню — закрыть
+  document.addEventListener('click',function(e){
+    const menu=document.getElementById('navMenu'); const btn=document.getElementById('navToggle');
+    if(menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) menu.classList.remove('show');
+  });
+});
+
+/* Форма: по нажатию собираем данные и открываем почтовый клиент через mailto:
+   хотите отправлять через сервер? Замените этот обработчик на fetch('/api/send-mail', { ... })
+   и обработайте на бэкенде.
+*/
+const form = document.getElementById('contactForm');
+const statusBox = document.getElementById('formStatus');
+const mailtoLink = document.getElementById('mailtoLink');
+
+if (mailtoLink && RECEIVER_EMAIL) {
+  mailtoLink.href = 'mailto:' + RECEIVER_EMAIL;
+  mailtoLink.textContent = RECEIVER_EMAIL;
+}
+
+function showStatus(type, text){
+  statusBox.className = type === 'ok' ? 'success' : 'error';
+  statusBox.textContent = text;
+}
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(form).entries());
+  // honeypot
+  if (data.company) { showStatus('err','Ошибка: спам-проверка.'); return; }
+
+  // валидация
+  if (!data.name || !data.phone || !data.message) {
+    showStatus('err','Пожалуйста, заполните поля с *.');
+    return;
+  }
+
+  // mailto fallback (без сервера)
+  const subject = encodeURIComponent('Заявка с сайта L.LOCK');
+  const bodyLines = [
+    'Имя: ' + data.name,
+    'Телефон: ' + data.phone,
+    'E-mail: ' + (data.email || '—'),
+    '',
+    'Сообщение:',
+    data.message
+  ];
+  const body = encodeURIComponent(bodyLines.join('\n'));
+
+  if (!RECEIVER_EMAIL || RECEIVER_EMAIL.indexOf('@') === -1) {
+    showStatus('err','Адрес получателя не задан. Укажите его в коде: const RECEIVER_EMAIL = "you@example.com"');
+    return;
+  }
+
+  // Открываем почтовый клиент пользователя
+  window.location.href = `mailto:${RECEIVER_EMAIL}?subject=${subject}&body=${body}`;
+  showStatus('ok','Черновик письма открыт в вашем почтовом клиенте. Нажмите «Отправить».');
+
+  // Сброс формы
+  form.reset();
+});
+</script>
+
+</body>
+</html>
